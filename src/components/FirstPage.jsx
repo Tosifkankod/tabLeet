@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 
-const FirstPage = () => {
+const FirstPage = ({ handlePropSetUsername }) => {
     const [userName, setUserName] = useState('');
 
-    const handleContinue = () => {
+    const handleSubmit = () => {
+        handlePropSetUsername(userName)
     }
 
     return (
@@ -17,9 +18,9 @@ const FirstPage = () => {
             <div className='p-4 h-100 flex items-end w-full relative z-3'>
                 <div className='w-full md:w-1/2 mx-auto text-center '>
                     <h1 className='text-center font-medium text-4xl'>Your coding journey awaits <br></br>— what's your LeetCode username?</h1>
-                    <input value={userName} name='userName' onChange={(e) => setUserName(e.target.value)} type="text" className='border-b-3 border-white w-[70%] !outline-none text-center p-2 text-3xl font-medium mt-6' />
+                    <input value={userName} name='userName' onChange={(e) => setUserName(e.target.value)} type="text" className='border-b-3 bg-transparent border-white w-[70%] !outline-none text-center p-2 text-3xl font-medium mt-6' />
                     <p className='mt-6 font-medium text-lg'>Please type your username properly.</p>
-                    <button onClick={handleContinue} className='border-2 hover:bg-white hover:text-black duration-200 cursor-pointer border-white mt-9 text-xl px-8 py-2 rounded-3xl'>Continue</button>
+                    <button onClick={handleSubmit} className='border-2 hover:bg-white hover:text-black duration-200 cursor-pointer border-white mt-9 text-xl px-8 py-2 rounded-3xl'>Continue</button>
                 </div>
             </div>
             <div className='w-full h-full top-0 absolute bg-black opacity-50 z-2'></div>
