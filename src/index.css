@@ -2,4 +2,45 @@
 
 * {
     font-family: "Poppins", sans-serif;
+    scroll-behavior: smo;
+}
+
+/* Custom scrollbar styling for smooth sliding */
+/* .draw {
+    display: grid;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+}
+
+.aitool:hover+.draw {
+    opacity: 1;
+    max-height: 200px;
+}
+
+.aitool:hover+.draw {
+    display: grid;
+} */
+
+.con {
+    width: 100px;
+    height: 35px;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+.con:hover {
+    width: 350px;
+    height: 260px;
+
+}
+
+.con .gr {
+    opacity: 0;
+    transition: all .5s;
+}
+
+.con:hover .gr {
+    opacity: 1;
 }

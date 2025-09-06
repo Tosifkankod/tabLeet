@@ -4,6 +4,7 @@ import FirstPage from "./components/FirstPage";
 import SideBar from "./components/SideBar";
 import { useEffect, useState } from "react";
 import { setStorageData, getStorageData } from "./utils/storage";
+import AiTools from "./components/AiTools";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,27 +12,27 @@ function App() {
 
   const handlePropSetUsername = (user_name) => {
     // for dev
-    localStorage.setItem('username', user_name)
+    // localStorage.setItem('username', user_name)
 
-    // setStorageData('username', user_name).then(() => {
-    //   console.log("user_name🤣", user_name);
-    //   setUserName(user_name);
-    //   localStorage.setItem('username', user_name)
-    // }).catch((err) => {
-    //   console.log(err);
-    //   alert("unable to proceed")
-    // })
+    setStorageData('username', user_name).then(() => {
+      console.log("user_name🤣", user_name);
+      setUserName(user_name);
+      localStorage.setItem('username', user_name)
+    }).catch((err) => {
+      console.log(err);
+      alert("unable to proceed")
+    })
   }
 
   function handleGetUsername() {
     // for dev
-    return localStorage.getItem('username')
+    // return localStorage.getItem('username')
 
-    // getStorageData('username').then((value) => {
-    //   return value
-    // }).catch((err) => {
-    //   console.log("app.js error setting username 😅", err);
-    // })
+    getStorageData('username').then((value) => {
+      return value
+    }).catch((err) => {
+      console.log("app.js error setting username 😅", err);
+    })
   }
 
   return (
@@ -148,14 +149,7 @@ function App() {
           </div>
         </div>
 
-        <div className="flex gap-4 absolute top-5 left-5 ">
-          <div className="py-2 px-4 bg-[#d9d9d9] text-xs rounded-full cursor-pointer">
-            AI Tools
-          </div>
-          <div className="py-2 px-4 bg-[#d9d9d9] text-xs rounded-full cursor-pointer">
-            Contests
-          </div>
-        </div>
+        <AiTools />
 
         <SideBar isOpen={isOpen} setIsOpen={setIsOpen} />
       </main>
