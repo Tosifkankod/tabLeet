@@ -2,27 +2,36 @@ import LiveClock from "./components/LiveClock";
 import Heatmap from "./components/Heatmap";
 import FirstPage from "./components/FirstPage";
 import SideBar from "./components/SideBar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { setStorageData, getStorageData } from "./utils/storage";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
-  const [userName, setUserName] = useState(
-    getStorageData('username').then((value) => {
-      return value
-    }).catch((err) => {
-      console.log("app.js error setting username 😅", err);
-    })
-  );
+  const [userName, setUserName] = useState(localStorage.getItem('username'));
 
   const handlePropSetUsername = (user_name) => {
-    setStorageData('username', user_name).then(() => {
-      console.log("user_name🤣", user_name);
-      setUserName(user_name);
-    }).catch((err) => {
-      console.log(err);
-      alert("unable to proceed")
-    })
+    // for dev
+    localStorage.setItem('username', user_name)
+
+    // setStorageData('username', user_name).then(() => {
+    //   console.log("user_name🤣", user_name);
+    //   setUserName(user_name);
+    //   localStorage.setItem('username', user_name)
+    // }).catch((err) => {
+    //   console.log(err);
+    //   alert("unable to proceed")
+    // })
+  }
+
+  function handleGetUsername() {
+    // for dev
+    return localStorage.getItem('username')
+
+    // getStorageData('username').then((value) => {
+    //   return value
+    // }).catch((err) => {
+    //   console.log("app.js error setting username 😅", err);
+    // })
   }
 
   return (
@@ -122,13 +131,13 @@ function App() {
         </section>
 
         <div className="flex gap-8 fixed bottom-[10%] sm:bottom-[3%]">
-          <div className="bg-[#737373] p-3 rounded-full cursor-pointer">
+          <div className="bg-[#d9d9d9] p-3 rounded-full cursor-pointer">
             <img src="assets/icons/youtube.png" className="size-6" />
           </div>
-          <div className="bg-[#737373] p-3 rounded-full cursor-pointer">
+          <div className="bg-[#d9d9d9] p-3 rounded-full cursor-pointer">
             <img src="assets/icons/chat-gpt.png" className="size-6" />
           </div>
-          <div className="bg-[#737373] p-3 rounded-full cursor-pointer">
+          <div className="bg-[#d9d9d9] p-3 rounded-full cursor-pointer">
             <img src="assets/icons/gmail.png" className="size-6" />
           </div>
         </div>

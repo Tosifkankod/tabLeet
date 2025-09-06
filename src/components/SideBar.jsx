@@ -23,37 +23,12 @@ const SideBar = ({ isOpen, setIsOpen }) => {
                             <p>show saved shortcut</p>
                         </div>
                         <div className="w-[20%] flex items-center justify-center">
-                            <img width={'30px'} src="/assets/icons/tab-leet-icon.svg" alt="" />
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" class="sr-only peer" />
+                                <div class="w-14 h-8 bg-gray-300 rounded-full peer peer-checked:bg-[#FFA150] peer-focus:ring-2 peer-focus:ring-[#FFA150] after:content-[''] after:absolute after:top-1 after:left-1 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:after:translate-x-6"></div>
+                            </label>
                         </div>
                     </div>
-                    <div className="nav p-2 flex">
-                        <div className="w-[80%] ">
-                            <h1 className="text-2xl font-medium">Shortcuts</h1>
-                            <p>show saved shortcut</p>
-                        </div>
-                        <div className="w-[20%] flex items-center justify-center">
-                            <img width={'30px'} src="/assets/icons/tab-leet-icon.svg" alt="" />
-                        </div>
-                    </div>
-                    <div className="nav p-2 flex">
-                        <div className="w-[80%] ">
-                            <h1 className="text-2xl font-medium">Shortcuts</h1>
-                            <p>show saved shortcut</p>
-                        </div>
-                        <div className="w-[20%] flex items-center justify-center">
-                            <img width={'30px'} src="/assets/icons/tab-leet-icon.svg" alt="" />
-                        </div>
-                    </div>
-                    <div className="nav p-2 flex">
-                        <div className="w-[80%] ">
-                            <h1 className="text-2xl font-medium">Shortcuts</h1>
-                            <p>show saved shortcut</p>
-                        </div>
-                        <div className="w-[20%] flex items-center justify-center">
-                            <img width={'30px'} src="/assets/icons/tab-leet-icon.svg" alt="" />
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
