@@ -5,7 +5,7 @@ const SideBar = ({ isOpen, setIsOpen }) => {
     const [isThemeOpen, setThemeIsOpen] = useState(false);
 
     return (
-        <div className="relative">
+        <div className="relative ">
             {isOpen && (
                 <div
                     onClick={() => setIsOpen(false)}
@@ -18,7 +18,7 @@ const SideBar = ({ isOpen, setIsOpen }) => {
                     <h1 className="text-4xl font-medium">TabLeet</h1>
                 </div>
 
-                <div className=" h-full px-4 py-8">
+                <div className=" h-full px-4 py-8 bg-mint-500">
 
                     <div className="nav p-2 flex">
                         <div className="w-[80%] ">

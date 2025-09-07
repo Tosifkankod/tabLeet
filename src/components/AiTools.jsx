@@ -33,7 +33,7 @@ const AiTools = () => {
         //     </div>
         // </div>
         <div className="">
-            <div className="con bg-[#d9d9d9] rounded-xl overflow-hidden">
+            <div className="con bg-[var(--color-surface)] rounded-xl overflow-hidden">
                 {/* Title */}
                 <p className="text-center mb-4 text-sm py-2">AI Tools</p>
 
