@@ -42,12 +42,12 @@ function App() {
 
   return (
     userName != null ? (
-      <main className="min-h-screen flex flex-col items-center justify-center gap-20 px-10">
+      <main className="min-h-screen flex flex-col items-center justify-center gap-20 px-10 bg-[var(--color-background)]">
         <section className="flex flex-col xl:flex-row gap-5 xl:gap-10">
           <div className="flex flex-col sm:flex-row md:flex-col justify-between gap-2">
             <LiveClock />
             <div>
-              <div className="flex items-center gap-3 border border-[#e1e0dc] rounded-xl p-1 sm:pr-10 md:pr-16 sm:w-fit">
+              <div className="flex items-center gap-3 border border-[var(--color-muted)] rounded-xl p-1 sm:pr-10 md:pr-16 sm:w-fit">
                 <img
                   src="/assets/images/dummy-profile.jpg"
                   className="rounded-xl size-[100px]"
@@ -55,7 +55,7 @@ function App() {
                 <div className="text-sm flex flex-col gap-2">
                   <p>tosifkandkod</p>
                   <p>Rank: 737,485</p>
-                  <button className="bg-[#42543c] rounded-sm text-white py-1 px-6 cursor-pointer text-xs">
+                  <button className="bg-[var(--color-primary)] rounded-sm text-white py-1 px-6 cursor-pointer text-xs">
                     Visit Profile
                   </button>
                 </div>
@@ -63,7 +63,7 @@ function App() {
             </div>
           </div>
           <div className="">
-            <p className="text-[#f1c784] text-sm md:text-base font-medium pb-1 text-ellipsis line-clamp-1">
+            <p className="text-[var(--color-secondary)] text-sm md:text-base font-medium pb-1 text-ellipsis line-clamp-1">
               "if you want something you never had, then do something you never
               did"
             </p>
@@ -72,19 +72,19 @@ function App() {
 
               <div className="hidden sm:block space-y-2">
                 <div className="grid grid-cols-2 gap-2 ">
-                  <div className="bg-[#dadada] p-2 px-8 rounded-xl text-center">
+                  <div className="bg-[var(--color-surface)] p-2 px-8 rounded-xl text-center">
                     <strong className="text-[#8da96c]">Easy</strong>
                     <p>106/892</p>
                   </div>
-                  <div className="bg-[#dadada] p-2 px-8 rounded-xl text-center">
+                  <div className="bg-[var(--color-surface)] p-2 px-8 rounded-xl text-center">
                     <strong className="text-[#fca36f]">Med</strong>
                     <p>106/892</p>
                   </div>
-                  <div className="bg-[#dadada] p-2 px-8 rounded-xl text-center">
+                  <div className="bg-[var(--color-surface)] p-2 px-8 rounded-xl text-center">
                     <strong className="text-[#e66962]">Hard</strong>
                     <p>106/892</p>
                   </div>
-                  <div className="bg-[#dadada] p-2 px-8 rounded-xl text-center">
+                  <div className="bg-[var(--color-surface)] p-2 px-8 rounded-xl text-center">
                     <img
                       src="assets/icons/fire.png"
                       className="size-[25px] mx-auto"
@@ -93,7 +93,7 @@ function App() {
                   </div>
                 </div>
 
-                <div className="bg-[#dadada] p-2 px-4 pb-5 rounded-xl text-center space-y-4">
+                <div className="bg-[var(--color-surface)] p-2 px-4 pb-5 rounded-xl text-center space-y-4">
                   <p>Time Left</p>
                   <div className="relative">
                     <div className="bg-[#747474] rounded-2xl">
@@ -111,7 +111,7 @@ function App() {
               </div>
             </div>
 
-            <div className="bg-[#d9d9d9] rounded-full mt-2 py-1.5 px-1.5 flex gap-1">
+            <div className="bg-[var(--color-surface)] rounded-full mt-2 py-1.5 px-1.5 flex gap-1">
               <button className="cursor-pointer ml-2 min-w-6">
                 <img
                   src="assets/icons/magnifier.png"
@@ -123,13 +123,13 @@ function App() {
                 className="w-full rounded-xl outline-0 px-2"
                 placeholder="Type here..."
               />
-              <button className="bg-[#6f6f6f] rounded-full min-w-10 h-10 flex items-center justify-center cursor-pointer">
+              <button className="bg-[var(--color-button)] rounded-full min-w-10 h-10 flex items-center justify-center cursor-pointer">
                 <img
                   src="assets/icons/voice.png"
                   className="rounded-full size-5"
                 />
               </button>
-              <button className="bg-[#737373] text-white rounded-full px-6 py-2 cursor-pointer">
+              <button className="bg-[var(--color-button)] text-[var(--color-primary)] rounded-full px-6 py-2 cursor-pointer">
                 Search
               </button>
             </div>
@@ -137,17 +137,18 @@ function App() {
         </section>
 
         <div className="flex gap-8 fixed bottom-[10%] sm:bottom-[3%]">
-          <div className="bg-[#d9d9d9] p-3 rounded-full cursor-pointer">
+          <div className="bg-[var(--color-surface)] p-3 rounded-full cursor-pointer">
             <img src="assets/icons/youtube.png" className="size-6" />
           </div>
-          <div className="bg-[#d9d9d9] p-3 rounded-full cursor-pointer">
+          <div className="bg-[var(--color-surface)] p-3 rounded-full cursor-pointer">
             <img src="assets/icons/chat-gpt.png" className="size-6" />
           </div>
-          <div className="bg-[#d9d9d9] p-3 rounded-full cursor-pointer">
+          <div className="bg-[var(--color-surface)] p-3 rounded-full cursor-pointer">
             <img src="assets/icons/gmail.png" className="size-6" />
           </div>
         </div>
 
+        {/* SIDE-BAR-TOGGLE */}
         <div onClick={() => setIsOpen(true)} className="size-12 rounded-full bg-[#727272] grid place-items-center cursor-pointer fixed bottom-[3%] right-[3%]">
           <div className="size-9 rounded-full grid place-items-center bg-[#020202]">
             <div className="size-5 rounded-full bg-white"></div>
@@ -158,7 +159,7 @@ function App() {
           {
             ltAiTools && <AiTools heading={'Ai Tools'} subHeading={"showAiTools"} />
           }
-          <div className="p-2 bg-[#d9d9d9] rounded-xl h-[35px] cursor-pointer text-sm px-4 ">
+          <div className="p-2 bg-[var(--color-surface)] rounded-xl h-[35px] cursor-pointer text-sm px-4 ">
             Courses
           </div>
         </div>

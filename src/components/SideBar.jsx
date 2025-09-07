@@ -8,7 +8,7 @@ const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible }) => {
     }
 
     return (
-        <div className="relative">
+        <div className="relative ">
             {isOpen && (
                 <div
                     onClick={() => setIsOpen(false)}
