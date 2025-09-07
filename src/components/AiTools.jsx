@@ -90,6 +90,11 @@ const AiTools = () => {
                                 })
                             }
                         </div>
+
+                        <div className="flex mt-4 gap-2">
+                            <button className=" flex-1 rounded-full p-1 duration-500 bg-[#313131]  text-white  cursor-pointer">Reset</button>
+                            <button className=" flex-1 rounded-full p-1 duration-500 bg-[#c6c6c6] hover:bg-[#313131] hover:text-white cursor-pointer">Save</button>
+                        </div>
                     </div>
                 </div>
             )}
