@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible }) => {
+const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
+    console.log(ltAiTools);
     const [isThemeOpen, setThemeIsOpen] = useState(false);
 
     const handleLtAiTools = (e) => {
@@ -30,7 +31,7 @@ const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible }) => {
                         </div>
                         <div className="w-[20%] flex items-center justify-center">
                             <label class="relative inline-flex items-center cursor-pointer">
-                                <input type="checkbox" name="ltAiTools" onChange={handleLtAiTools} class="sr-only peer" />
+                                <input type="checkbox" checked={ltAiTools} name="ltAiTools" onChange={handleLtAiTools} class="sr-only peer" />
                                 <div class="w-14 h-8 bg-gray-300 rounded-full peer peer-checked:bg-[#FFA150] peer-focus:ring-2 peer-focus:ring-[#FFA150] after:content-[''] after:absolute after:top-1 after:left-1 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:after:translate-x-6"></div>
                             </label>
                         </div>
