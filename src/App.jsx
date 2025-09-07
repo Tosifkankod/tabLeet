@@ -9,7 +9,9 @@ import AiTools from "./components/AiTools";
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [userName, setUserName] = useState(localStorage.getItem('username'));
-  const [ltAiTools, setLtAiTools] = useState(localStorage.getItem('lgAiTools'));
+  const [ltAiTools, setLtAiTools] = useState(() => {
+    return JSON.parse(localStorage.getItem('ltAiTools')) || false
+  });
 
   const handlePropSetUsername = (user_name) => {
     // for dev
@@ -38,6 +40,7 @@ function App() {
 
   const handleAiToolVisible = (val) => {
     setLtAiTools(val);
+    localStorage.setItem('ltAiTools', val);
   }
 
   return (
@@ -164,7 +167,7 @@ function App() {
           </div>
         </div>
 
-        <SideBar isOpen={isOpen} handleAiToolVisible={handleAiToolVisible} setIsOpen={setIsOpen} />
+        <SideBar isOpen={isOpen} ltAiTools={ltAiTools} handleAiToolVisible={handleAiToolVisible} setIsOpen={setIsOpen} />
       </main>
     ) : (
       <FirstPage handlePropSetUsername={handlePropSetUsername} userName={userName} />
