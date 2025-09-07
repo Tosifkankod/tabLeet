@@ -1,4 +1,3 @@
-import { useEffect, useRef } from 'react';
 
 const AiTools = () => {
     const urls = [

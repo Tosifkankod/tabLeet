@@ -1,8 +1,11 @@
 import { useState } from "react";
 
-const SideBar = ({ isOpen, setIsOpen }) => {
-
+const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible }) => {
     const [isThemeOpen, setThemeIsOpen] = useState(false);
+
+    const handleLtAiTools = (e) => {
+        handleAiToolVisible(e.target.checked)
+    }
 
     return (
         <div className="relative">
@@ -18,21 +21,22 @@ const SideBar = ({ isOpen, setIsOpen }) => {
                     <h1 className="text-4xl font-medium">TabLeet</h1>
                 </div>
 
+                {/* NAVIGATION STARTS FROM HERE */}
                 <div className=" h-full px-4 py-8">
-
                     <div className="nav p-2 flex">
                         <div className="w-[80%] ">
-                            <h1 className="text-2xl font-medium">Shortcuts</h1>
-                            <p>show saved shortcut</p>
+                            <h1 className="text-2xl font-medium">Ai Tools</h1>
+                            <p>show ai tools</p>
                         </div>
                         <div className="w-[20%] flex items-center justify-center">
                             <label class="relative inline-flex items-center cursor-pointer">
-                                <input type="checkbox" class="sr-only peer" />
+                                <input type="checkbox" name="ltAiTools" onChange={handleLtAiTools} class="sr-only peer" />
                                 <div class="w-14 h-8 bg-gray-300 rounded-full peer peer-checked:bg-[#FFA150] peer-focus:ring-2 peer-focus:ring-[#FFA150] after:content-[''] after:absolute after:top-1 after:left-1 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:after:translate-x-6"></div>
                             </label>
                         </div>
                     </div>
 
+                    {/* THEME SETTINGS */}
                     <div onClick={() => setThemeIsOpen((prev) => !prev)} className="border border-transparent hover:border-[#D1D1D1] rounded-md p-1.5 hover:bg-[#E2E2E2] w-fit flex items-center gap-1.5 transition-all duration-300 cursor-pointer">
                         <div className="bg-white border border-[#D1D1D1] rounded-md grid grid-cols-2 gap-0.5 p-1">
                             <div className="size-1 rounded-full bg-red-600"></div>

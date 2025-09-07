@@ -9,6 +9,7 @@ import AiTools from "./components/AiTools";
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [userName, setUserName] = useState(localStorage.getItem('username'));
+  const [ltAiTools, setLtAiTools] = useState(localStorage.getItem('lgAiTools'));
 
   const handlePropSetUsername = (user_name) => {
     // for dev
@@ -33,6 +34,10 @@ function App() {
     }).catch((err) => {
       console.log("app.js error setting username 😅", err);
     })
+  }
+
+  const handleAiToolVisible = (val) => {
+    setLtAiTools(val);
   }
 
   return (
@@ -150,13 +155,15 @@ function App() {
         </div>
 
         <div className="flex absolute top-4 left-4 gap-4 ">
-          <AiTools />
+          {
+            ltAiTools && <AiTools heading={'Ai Tools'} subHeading={"showAiTools"} />
+          }
           <div className="p-2 bg-[#d9d9d9] rounded-xl h-[35px] cursor-pointer text-sm px-4 ">
             Courses
           </div>
         </div>
 
-        <SideBar isOpen={isOpen} setIsOpen={setIsOpen} />
+        <SideBar isOpen={isOpen} handleAiToolVisible={handleAiToolVisible} setIsOpen={setIsOpen} />
       </main>
     ) : (
       <FirstPage handlePropSetUsername={handlePropSetUsername} userName={userName} />
