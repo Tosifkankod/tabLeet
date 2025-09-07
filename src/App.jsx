@@ -149,7 +149,12 @@ function App() {
           </div>
         </div>
 
-        <AiTools />
+        <div className="flex absolute top-4 left-4 gap-4 ">
+          <AiTools />
+          <div className="p-2 bg-[#d9d9d9] rounded-xl h-[35px] cursor-pointer text-sm px-4 ">
+            Courses
+          </div>
+        </div>
 
         <SideBar isOpen={isOpen} setIsOpen={setIsOpen} />
       </main>

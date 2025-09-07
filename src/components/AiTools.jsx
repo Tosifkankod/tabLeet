@@ -32,7 +32,7 @@ const AiTools = () => {
         //         }
         //     </div>
         // </div>
-        <div className="absolute top-4 left-4">
+        <div className="">
             <div className="con bg-[#d9d9d9] rounded-xl overflow-hidden">
                 {/* Title */}
                 <p className="text-center mb-4 text-sm py-2">AI Tools</p>
