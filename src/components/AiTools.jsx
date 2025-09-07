@@ -1,15 +1,15 @@
 
 const AiTools = () => {
     const urls = [
-        { url: "ChatGPT", img: "/assets/icons/chat-gpt.png" },
-        { url: "Perplexity", img: "/assets/icons/chat-gpt.png" },
-        { url: "Gemini", img: "/assets/icons/chat-gpt.png" },
-        { url: "Claude", img: "/assets/icons/chat-gpt.png" },
-        { url: "DeepSeek", img: "/assets/icons/chat-gpt.png" },
-        { url: "MetaAI", img: "/assets/icons/chat-gpt.png" },
-        { url: "Grok", img: "/assets/icons/chat-gpt.png" },
-        { url: "Llama", img: "/assets/icons/chat-gpt.png" },
-        { url: "Mistral", img: "/assets/icons/chat-gpt.png" },
+        { name: "ChatGPT", url: "https://chatgpt.com/", img: "/assets/icons/chat-gpt.png" },
+        { name: "Perplexity", url: "https://www.perplexity.ai/", img: "/assets/icons/chat-gpt.png" },
+        { name: "Gemini", url: "https://gemini.google.com/", img: "/assets/icons/chat-gpt.png" },
+        { name: "Claude", url: "https://www.anthropic.com/claude", img: "/assets/icons/chat-gpt.png" },
+        { name: "DeepSeek", url: "https://www.deepseek.com/", img: "/assets/icons/chat-gpt.png" },
+        { name: "MetaAI", url: "https://about.fb.com/news/2025/04/introducing-meta-ai-app-new-way-access-ai-assistant/", img: "/assets/icons/chat-gpt.png" },
+        { name: "Grok", url: "https://x.ai/grok", img: "/assets/icons/chat-gpt.png" },
+        { name: "Llama", url: "https://www.llama.com/", img: "/assets/icons/chat-gpt.png" },
+        { name: "Mistral", url: "https://mistral.ai/", img: "/assets/icons/chat-gpt.png" },
     ];
 
 
@@ -39,9 +39,11 @@ const AiTools = () => {
                 {/* Grid */}
                 <div className="grid grid-cols-4 gr grid-rows-3 gap-2 p-2 transition-all w-full ">
                     {urls.map((item, index) => (
-                        <div
+                        <a
+                            href={item.url}
                             key={index}
-                            className="flex flex-col items-center  justify-start gap-2 p-2 rounded-lg bg-gray-200 hover:bg-gray-800 hover:text-white cursor-pointer transition-all duration-300 "
+                            target="_blank"
+                            className="flex flex-col items-center  justify-start gap-2 p-2 rounded-lg bg-gray-200 hover:bg-gray-800 hover:text-white transition-all duration-300 "
                         >
                             <img
                                 width="15"
@@ -50,8 +52,8 @@ const AiTools = () => {
                                 alt="chatgpt"
                                 className="object-contain"
                             />
-                            <p className="text-xs text-center  w-full">{item.url}</p>
-                        </div>
+                            <p className="text-xs text-center  w-full">{item.name}</p>
+                        </a>
                     ))}
                 </div>
             </div>
