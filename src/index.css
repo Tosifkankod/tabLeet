@@ -6,14 +6,19 @@
 }
 
 :root {
-  --color-background: #ffffff;       /* Page bg */
-  --color-surface: #d9d9d9;          /* Card/section bg */
+    --color-background: #ffffff;
+    /* Page bg */
+    --color-surface: #d9d9d9;
+    /* Card/section bg */
 
-  --color-primary: #313131;          /* Heading text, links, primary button bg */
-  --color-button: #c6c6c6;
+    --color-primary: #313131;
+    /* Heading text, links, primary button bg */
+    --color-button: #c6c6c6;
 
-  --color-secondary: #4d4d4d;        /* Paragraph text, less important buttons */
-  --color-muted: #c5c5c5;            /* Borders, disabled text, placeholders */
+    --color-secondary: #4d4d4d;
+    /* Paragraph text, less important buttons */
+    --color-muted: #c5c5c5;
+    /* Borders, disabled text, placeholders */
 }
 
 /* Custom scrollbar styling for smooth sliding */

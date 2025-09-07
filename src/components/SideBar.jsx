@@ -24,16 +24,24 @@ const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
 
                 {/* NAVIGATION STARTS FROM HERE */}
                 <div className=" h-full px-4 py-8">
-                    <div className="nav p-2 flex">
-                        <div className="w-[80%] ">
-                            <h1 className="text-2xl font-medium">Ai Tools</h1>
-                            <p>show ai tools</p>
+
+                    {/* AI TOOLS */}
+                    <div className="nav p-2">
+                        <div className="flex w-full">
+                            <div className="w-[80%] ">
+                                <h1 className="text-2xl font-medium">Ai Tools</h1>
+                                <p>show ai tools</p>
+                            </div>
+                            <div className="w-[20%] flex items-center justify-center">
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" checked={ltAiTools} name="ltAiTools" onChange={handleLtAiTools} class="sr-only peer" />
+                                    <div class="w-14 h-8 bg-gray-300 rounded-full peer peer-checked:bg-[#FFA150] peer-focus:ring-2 peer-focus:ring-[#FFA150] after:content-[''] after:absolute after:top-1 after:left-1 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:after:translate-x-6"></div>
+                                </label>
+                            </div>
                         </div>
-                        <div className="w-[20%] flex items-center justify-center">
-                            <label class="relative inline-flex items-center cursor-pointer">
-                                <input type="checkbox" checked={ltAiTools} name="ltAiTools" onChange={handleLtAiTools} class="sr-only peer" />
-                                <div class="w-14 h-8 bg-gray-300 rounded-full peer peer-checked:bg-[#FFA150] peer-focus:ring-2 peer-focus:ring-[#FFA150] after:content-[''] after:absolute after:top-1 after:left-1 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:after:translate-x-6"></div>
-                            </label>
+                        <div className="mt-2">
+                            <h1 className="text-2xl font-medium">Edit AI Tools</h1>
+                            
                         </div>
                     </div>
 
@@ -102,5 +110,6 @@ const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
         </div>
     );
 }
+
 
 export default SideBar
