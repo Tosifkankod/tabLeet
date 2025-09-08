@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { aiToolsConstant } from "../constants/Aitools";
 
 const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
     console.log(ltAiTools);
@@ -6,6 +7,16 @@ const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
 
     const handleLtAiTools = (e) => {
         handleAiToolVisible(e.target.checked)
+        let items = localStorage.getItem('ltAiToolsItems');
+        if (items == null || items == undefined) {
+            let localItems = [];
+            aiToolsConstant.forEach((value) => {
+                const ai = { name: value.name, id: value.id, visiblity: false };
+                localItems.push(ai);
+            })
+            localStorage.setItem('ltAiToolsItems', JSON.stringify(localItems));
+        }
+
     }
 
     return (
@@ -41,7 +52,7 @@ const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
                         </div>
                         <div className="mt-2">
                             <h1 className="text-2xl font-medium">Edit AI Tools</h1>
-                            
+
                         </div>
                     </div>
 

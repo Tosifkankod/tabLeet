@@ -1,19 +1,8 @@
 import { useState } from "react";
+import { aiToolsConstant } from "../constants/Aitools";
 
 const AiTools = () => {
     const [isOpen, setIsOpen] = useState(false);
-
-    const urls = [
-        { name: "ChatGPT", url: "https://chatgpt.com/", img: "/assets/icons/chat-gpt.png" },
-        { name: "Perplexity", url: "https://www.perplexity.ai/", img: "/assets/icons/chat-gpt.png" },
-        { name: "Gemini", url: "https://gemini.google.com/", img: "/assets/icons/chat-gpt.png" },
-        { name: "Claude", url: "https://www.anthropic.com/claude", img: "/assets/icons/chat-gpt.png" },
-        { name: "DeepSeek", url: "https://www.deepseek.com/", img: "/assets/icons/chat-gpt.png" },
-        { name: "MetaAI", url: "https://about.fb.com/news/2025/04/introducing-meta-ai-app-new-way-access-ai-assistant/", img: "/assets/icons/chat-gpt.png" },
-        { name: "Grok", url: "https://x.ai/grok", img: "/assets/icons/chat-gpt.png" },
-        { name: "Llama", url: "https://www.llama.com/", img: "/assets/icons/chat-gpt.png" },
-        { name: "Mistral", url: "https://mistral.ai/", img: "/assets/icons/chat-gpt.png" },
-    ];
 
     return (
         <div className="">
@@ -23,10 +12,10 @@ const AiTools = () => {
 
                 {/* Grid */}
                 <div className="grid grid-cols-4 gr grid-rows-3 gap-2 p-2 transition-all w-full ">
-                    {urls.map((item, index) => (
+                    {aiToolsConstant.map((item, index) => (
                         <a
                             href={item.url}
-                            key={index}
+                            key={item.id}
                             target="_blank"
                             className="flex flex-col items-center  justify-start gap-2 p-2 rounded-lg bg-gray-200 hover:bg-gray-800 hover:text-white transition-all duration-300 "
                         >
@@ -56,8 +45,6 @@ const AiTools = () => {
                 </div>
             </div>
 
-
-
             {/* Popup overlay */}
             {isOpen && (
                 <div
@@ -76,11 +63,10 @@ const AiTools = () => {
                             </span>
                         </h2>
                         <p className="text-sm mb-4 font-extralight">select AI tool you want to display</p>
-                        <div className="flex flex-col gap-2 h-80  px-2 overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-[#c6c6c6] [&::-webkit-scrollbar-track]:rounded-full  [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#313131]
-">
+                        <div className="flex flex-col gap-2 h-80  px-2 overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-[#c6c6c6] [&::-webkit-scrollbar-track]:rounded-full  [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#313131]">
                             {
-                                urls.map((item, index) => {
-                                    return <div key={index} className="bg-[#c6c6c6] p-2 flex items-center gap-4 rounded-md">
+                                aiToolsConstant.map((item, index) => {
+                                    return <div key={item.id} className="bg-[#c6c6c6] p-2 flex items-center gap-4 rounded-md">
                                         <input
                                             type="checkbox"
                                             class="w-5 h-5 rounded-md border border-[#313131] cursor-pointer bg-[#d9d9d9] checked:bg-[#c6c6c6] checked:border-[#313131] accent-[#313131]"
