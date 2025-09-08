@@ -2,15 +2,15 @@ import { useState } from "react";
 import { aiToolsConstant } from "../constants/Aitools";
 
 const url = {
-    ChatGPT: "https://chatgpt.com/",
-    Perplexity: "https://www.perplexity.ai/",
-    Gemini: "https://gemini.google.com/",
-    Claude: "https://www.anthropic.com/claude",
-    DeepSeek: "https://www.deepseek.com/",
-    MetaAI: "https://about.fb.com/news/2025/04/introducing-meta-ai-app-new-way-access-ai-assistant/", img: "/assets/icons/chat-gpt.png",
-    Grok: "https://x.ai/grok",
-    Llama: "https://www.llama.com/",
-    Mistral: "https://mistral.ai/",
+    ChatGPT: { url: "https://chatgpt.com/", icon: '/assets/aitools/chatgpt.svg' },
+    Perplexity: { url: "https://www.perplexity.ai/", icon: '/assets/aitools/perplexity.svg' },
+    Gemini: { url: "https://gemini.google.com/", icon: '/assets/aitools/gemini.svg' },
+    Claude: { url: "https://www.anthropic.com/claude", icon: '/assets/aitools/claude.svg' },
+    DeepSeek: { url: "https://www.deepseek.com/", icon: '/assets/aitools/deepseek.svg' },
+    MetaAI: { url: "https://about.fb.com/news/2025/04/introducing-meta-ai-app-new-way-access-ai-assistant/", icon: '/assets/aitools/meta.svg' },
+    Grok: { url: "https://x.ai/grok", icon: '/assets/aitools/grok.svg' },
+    Llama: { url: "https://www.llama.com/", icon: '' },
+    Mistral: { url: "https://mistral.ai/", icon: '' },
 }
 
 const AiTools = () => {
@@ -50,19 +50,25 @@ const AiTools = () => {
                     {
                         aiTools.map((item, index) => (
                             item.visibility && <a
-                                href={url[item.name]}
+                                href={url[item.name].url}
                                 key={index}
                                 target="_blank"
                                 className="flex flex-col items-center  justify-start gap-2 p-2 rounded-lg bg-gray-200 hover:bg-gray-800 hover:text-white transition-all duration-300 "
                             >
-                                <img
-                                    width="15"
-                                    height="15"
-                                    src="/assets/icons/chat-gpt.png"
-                                    alt="chatgpt"
-                                    className="object-contain"
-                                />
-                                <p className="text-xs text-center  w-full">{item.name}</p>
+                                {
+                                    url[item.name].icon != '' ? (
+                                        <img
+                                            width="15"
+                                            height="15"
+                                            src={url[item.name].icon}
+                                            alt="chatgpt"
+                                            className="object-contain overflow-hidden"
+                                        />
+                                    ) : (
+                                        <span className="text-xs">AI</span>
+                                    )
+                                }
+                                <p className="text-xs text-center w-full">{item.name}</p>
                             </a>
                         ))
 
