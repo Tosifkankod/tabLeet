@@ -1,8 +1,43 @@
 import { useState } from "react";
 import { aiToolsConstant } from "../constants/Aitools";
 
+const url = {
+    ChatGPT: "https://chatgpt.com/",
+    Perplexity: "https://www.perplexity.ai/",
+    Gemini: "https://gemini.google.com/",
+    Claude: "https://www.anthropic.com/claude",
+    DeepSeek: "https://www.deepseek.com/",
+    MetaAI: "https://about.fb.com/news/2025/04/introducing-meta-ai-app-new-way-access-ai-assistant/", img: "/assets/icons/chat-gpt.png",
+    Grok: "https://x.ai/grok",
+    Llama: "https://www.llama.com/",
+    Mistral: "https://mistral.ai/",
+}
+
 const AiTools = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [aiTools, setAiTools] = useState(() => {
+        const stored = localStorage.getItem("ltAiToolsItems");
+        return stored ? JSON.parse(stored) : aiToolsConstant;
+    })
+
+    const handleOnChangeCheckbox = (e) => {
+
+        setAiTools((prev) =>
+            prev.map((tool) => {
+                return tool.name == e.target.name ? { ...tool, visibility: e.target.checked } : tool;
+            })
+        )
+        console.log(aiTools)
+    }
+
+    const handleOnReset = () => {
+        setAiTools(aiToolsConstant);
+    }
+
+    const handleOnSave = () => {
+        localStorage.setItem("ltAiToolsItems", JSON.stringify(aiTools));
+        setIsOpen(false);
+    }
 
     return (
         <div className="">
@@ -12,23 +47,26 @@ const AiTools = () => {
 
                 {/* Grid */}
                 <div className="grid grid-cols-4 gr grid-rows-3 gap-2 p-2 transition-all w-full ">
-                    {aiToolsConstant.map((item, index) => (
-                        <a
-                            href={item.url}
-                            key={item.id}
-                            target="_blank"
-                            className="flex flex-col items-center  justify-start gap-2 p-2 rounded-lg bg-gray-200 hover:bg-gray-800 hover:text-white transition-all duration-300 "
-                        >
-                            <img
-                                width="15"
-                                height="15"
-                                src="/assets/icons/chat-gpt.png"
-                                alt="chatgpt"
-                                className="object-contain"
-                            />
-                            <p className="text-xs text-center  w-full">{item.name}</p>
-                        </a>
-                    ))}
+                    {
+                        aiTools.map((item, index) => (
+                            item.visibility && <a
+                                href={url[item.name]}
+                                key={index}
+                                target="_blank"
+                                className="flex flex-col items-center  justify-start gap-2 p-2 rounded-lg bg-gray-200 hover:bg-gray-800 hover:text-white transition-all duration-300 "
+                            >
+                                <img
+                                    width="15"
+                                    height="15"
+                                    src="/assets/icons/chat-gpt.png"
+                                    alt="chatgpt"
+                                    className="object-contain"
+                                />
+                                <p className="text-xs text-center  w-full">{item.name}</p>
+                            </a>
+                        ))
+
+                    }
                     <div onClick={() => setIsOpen(true)} className="group flex flex-col justify-center items-center overflow-hidden gap-2 p-2 rounded-lg bg-gray-200 hover:bg-gray-800 transition-all duration-300">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +79,6 @@ const AiTools = () => {
                             <path d="M 25 2 C 12.309295 2 2 12.309295 2 25 C 2 37.690705 12.309295 48 25 48 C 37.690705 48 48 37.690705 48 25 C 48 12.309295 37.690705 2 25 2 z M 25 4 C 36.609824 4 46 13.390176 46 25 C 46 36.609824 36.609824 46 25 46 C 13.390176 46 4 36.609824 4 25 C 4 13.390176 13.390176 4 25 4 z M 24 13 L 24 24 L 13 24 L 13 26 L 24 26 L 24 37 L 26 37 L 26 26 L 37 26 L 37 24 L 26 24 L 26 13 L 24 13 z" />
                         </svg>
                     </div>
-
                 </div>
             </div>
 
@@ -65,11 +102,14 @@ const AiTools = () => {
                         <p className="text-sm mb-4 font-extralight">select AI tool you want to display</p>
                         <div className="flex flex-col gap-2 h-80  px-2 overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-[#c6c6c6] [&::-webkit-scrollbar-track]:rounded-full  [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#313131]">
                             {
-                                aiToolsConstant.map((item, index) => {
-                                    return <div key={item.id} className="bg-[#c6c6c6] p-2 flex items-center gap-4 rounded-md">
+                                aiTools.map((item, index) => {
+                                    return <div key={index} className="bg-[#c6c6c6] p-2 flex items-center gap-4 rounded-md">
                                         <input
                                             type="checkbox"
-                                            class="w-5 h-5 rounded-md border border-[#313131] cursor-pointer bg-[#d9d9d9] checked:bg-[#c6c6c6] checked:border-[#313131] accent-[#313131]"
+                                            className="w-5 h-5 rounded-md border border-[#313131] cursor-pointer bg-[#d9d9d9] checked:bg-[#c6c6c6] checked:border-[#313131] accent-[#313131]"
+                                            checked={item.visibility}
+                                            name={item.name}
+                                            onChange={handleOnChangeCheckbox}
                                         />
                                         <label htmlFor="" className="font-medium text-md">{item.name}</label>
                                     </div>
@@ -78,8 +118,8 @@ const AiTools = () => {
                         </div>
 
                         <div className="flex mt-4 gap-2">
-                            <button className=" flex-1 rounded-full p-1 duration-500 bg-[#313131]  text-white  cursor-pointer">Reset</button>
-                            <button className=" flex-1 rounded-full p-1 duration-500 bg-[#c6c6c6] hover:bg-[#313131] hover:text-white cursor-pointer">Save</button>
+                            <button onClick={handleOnReset} className=" flex-1 rounded-full p-1 duration-500 bg-[#313131]  text-white  cursor-pointer">Reset</button>
+                            <button onClick={handleOnSave} className=" flex-1 rounded-full p-1 duration-500 bg-[#c6c6c6] hover:bg-[#313131] hover:text-white cursor-pointer">Save</button>
                         </div>
                     </div>
                 </div>
