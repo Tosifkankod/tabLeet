@@ -1,17 +1,7 @@
 import { useState } from "react";
-import { aiToolsConstant } from "../constants/Aitools";
+import { aiToolsConstant, aiToolsMetaConstant } from "../constants/Aitools";
+import { localStorageHelper } from '../utils/localStorageHelper'
 
-const url = {
-    ChatGPT: { url: "https://chatgpt.com/", icon: '/assets/aitools/chatgpt.svg' },
-    Perplexity: { url: "https://www.perplexity.ai/", icon: '/assets/aitools/perplexity.svg' },
-    Gemini: { url: "https://gemini.google.com/", icon: '/assets/aitools/gemini.svg' },
-    Claude: { url: "https://www.anthropic.com/claude", icon: '/assets/aitools/claude.svg' },
-    DeepSeek: { url: "https://www.deepseek.com/", icon: '/assets/aitools/deepseek.svg' },
-    MetaAI: { url: "https://about.fb.com/news/2025/04/introducing-meta-ai-app-new-way-access-ai-assistant/", icon: '/assets/aitools/meta.svg' },
-    Grok: { url: "https://x.ai/grok", icon: '/assets/aitools/grok.svg' },
-    Llama: { url: "https://www.llama.com/", icon: '' },
-    Mistral: { url: "https://mistral.ai/", icon: '' },
-}
 
 const AiTools = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -20,6 +10,7 @@ const AiTools = () => {
         return stored ? JSON.parse(stored) : aiToolsConstant;
     })
 
+    // handle checkbox
     const handleOnChangeCheckbox = (e) => {
 
         setAiTools((prev) =>
@@ -30,37 +21,37 @@ const AiTools = () => {
         console.log(aiTools)
     }
 
+    // handle Reset
     const handleOnReset = () => {
         setAiTools(aiToolsConstant);
     }
 
+    // handle Save
     const handleOnSave = () => {
         localStorage.setItem("ltAiToolsItems", JSON.stringify(aiTools));
         setIsOpen(false);
     }
 
     return (
-        <div className="">
+        <div>
+            {/* Ai Tools */}
             <div className="con bg-[var(--color-surface)] rounded-xl overflow-hidden ">
-                {/* Title */}
                 <p className="text-center mb-4 text-sm py-2">AI Tools</p>
-
-                {/* Grid */}
                 <div className="grid grid-cols-4 gr grid-rows-3 gap-2 p-2 transition-all w-full ">
                     {
                         aiTools.map((item, index) => (
                             item.visibility && <a
-                                href={url[item.name].url}
+                                href={aiToolsMetaConstant[item.name].url}
                                 key={index}
                                 target="_blank"
                                 className="flex flex-col items-center  justify-start gap-2 p-2 rounded-lg bg-gray-200 hover:bg-gray-800 hover:text-white transition-all duration-300 "
                             >
                                 {
-                                    url[item.name].icon != '' ? (
+                                    aiToolsMetaConstant[item.name].icon != '' ? (
                                         <img
                                             width="15"
                                             height="15"
-                                            src={url[item.name].icon}
+                                            src={aiToolsMetaConstant[item.name].icon}
                                             alt="chatgpt"
                                             className="object-contain overflow-hidden"
                                         />

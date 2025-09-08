@@ -1,4 +1,4 @@
-const storage = {
+export const localStorageHelper = {
 
     set(key, value) {
         try {
