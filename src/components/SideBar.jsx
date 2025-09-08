@@ -2,7 +2,6 @@ import { useState } from "react";
 import { aiToolsConstant } from "../constants/Aitools";
 
 const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
-    console.log(ltAiTools);
     const [isThemeOpen, setThemeIsOpen] = useState(false);
 
     const handleLtAiTools = (e) => {
