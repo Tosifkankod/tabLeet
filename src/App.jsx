@@ -2,7 +2,7 @@ import LiveClock from "./components/LiveClock";
 import Heatmap from "./components/Heatmap";
 import FirstPage from "./components/FirstPage";
 import SideBar from "./components/SideBar";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { setStorageData, getStorageData } from "./utils/storage";
 import AiTools from "./components/AiTools";
 import { localStorageHelper } from "./utils/localStorageHelper";
@@ -18,26 +18,6 @@ function App() {
   const handlePropSetUsername = (user_name) => {
     // for dev
     localStorage.setItem(keys.username, user_name)
-
-    // setStorageData(keys.username, user_name).then(() => {
-    //   console.log("user_name🤣", user_name);
-    //   setUserName(user_name);
-    //   localStorage.setItem('username', user_name)
-    // }).catch((err) => {
-    //   console.log(err);
-    //   alert("unable to proceed")
-    // })
-  }
-
-  function handleGetUsername() {
-    // for dev
-    return localStorageHelper.get(keys.username)
-
-    // getStorageData(keys.username).then((value) => {
-    //   return value
-    // }).catch((err) => {
-    //   console.log("app.js error setting username 😅", err);
-    // })
   }
 
   const handleAiToolVisible = (val) => {

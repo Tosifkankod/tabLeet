@@ -2,8 +2,12 @@ export const localStorageHelper = {
 
     set(key, value) {
         try {
-            const serialized = JSON.stringify(value);
-            localStorage.setItem(key, serialized)
+            if (typeof value === "object") {
+                const serialized = JSON.stringify(value);
+                localStorage.setItem(key, serialized)
+            } else {
+                localStorage.setItem(key, value)
+            }
         } catch (error) {
             console.error('Error saving localStorage', error)
         }
@@ -12,7 +16,14 @@ export const localStorageHelper = {
     get(key, defaultValue = null) {
         try {
             const item = localStorage.getItem(key);
-            return item ? JSON.parse(item) : defaultValue;
+            console.log(item);
+            if (item === null || item === undefined) return defaultValue;
+
+            try {
+                return JSON.parse(item);
+            } catch {
+                return item;
+            }
         } catch (error) {
             console.log("Error reading from localStorage", error);
             return defaultValue;
