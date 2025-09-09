@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { aiToolsConstant, aiToolsMetaConstant } from "../constants/Aitools";
 import { localStorageHelper } from '../utils/localStorageHelper'
+import { keys } from "../constants/localStoragekeys";
 
 
 const AiTools = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [aiTools, setAiTools] = useState(() => {
-        const stored = localStorage.getItem("ltAiToolsItems");
-        return stored ? JSON.parse(stored) : aiToolsConstant;
+        const stored = localStorageHelper.get(keys.ltAiToolsItems);
+        return stored ? stored : aiToolsConstant;
     })
 
     // handle checkbox
@@ -28,7 +29,7 @@ const AiTools = () => {
 
     // handle Save
     const handleOnSave = () => {
-        localStorage.setItem("ltAiToolsItems", JSON.stringify(aiTools));
+        localStorageHelper.set(keys.ltAiToolsItems, aiTools)
         setIsOpen(false);
     }
 

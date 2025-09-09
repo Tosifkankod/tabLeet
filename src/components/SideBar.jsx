@@ -1,16 +1,17 @@
 import { useState } from "react";
 import { aiToolsConstant } from "../constants/Aitools";
+import { keys } from '../constants/localStoragekeys';
+import { localStorageHelper } from '../utils/localStorageHelper';
 
 const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
     const [isThemeOpen, setThemeIsOpen] = useState(false);
 
     const handleLtAiTools = (e) => {
         handleAiToolVisible(e.target.checked)
-        let items = localStorage.getItem('ltAiToolsItems');
+        let items = localStorageHelper.get(keys.ltAiToolsItems);
         if (items == null || items == undefined) {
-            localStorage.setItem('ltAiToolsItems', JSON.stringify(aiToolsConstant));
+            localStorageHelper.set(keys.ltAiToolsItems, aiToolsConstant);
         }
-
     }
 
     return (

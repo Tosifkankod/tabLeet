@@ -5,42 +5,44 @@ import SideBar from "./components/SideBar";
 import { useEffect, useState } from "react";
 import { setStorageData, getStorageData } from "./utils/storage";
 import AiTools from "./components/AiTools";
+import { localStorageHelper } from "./utils/localStorageHelper";
+import { keys } from "./constants/localStoragekeys";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
-  const [userName, setUserName] = useState(localStorage.getItem('username'));
+  const [userName, setUserName] = useState(localStorageHelper.get(keys.username));
   const [ltAiTools, setLtAiTools] = useState(() => {
-    return JSON.parse(localStorage.getItem('ltAiTools')) || false
+    return localStorageHelper.get(keys.ltAiToolsVisible) || false
   });
 
   const handlePropSetUsername = (user_name) => {
     // for dev
-    // localStorage.setItem('username', user_name)
+    localStorage.setItem(keys.username, user_name)
 
-    setStorageData('username', user_name).then(() => {
-      console.log("user_name🤣", user_name);
-      setUserName(user_name);
-      localStorage.setItem('username', user_name)
-    }).catch((err) => {
-      console.log(err);
-      alert("unable to proceed")
-    })
+    // setStorageData(keys.username, user_name).then(() => {
+    //   console.log("user_name🤣", user_name);
+    //   setUserName(user_name);
+    //   localStorage.setItem('username', user_name)
+    // }).catch((err) => {
+    //   console.log(err);
+    //   alert("unable to proceed")
+    // })
   }
 
   function handleGetUsername() {
     // for dev
-    // return localStorage.getItem('username')
+    return localStorageHelper.get(keys.username)
 
-    getStorageData('username').then((value) => {
-      return value
-    }).catch((err) => {
-      console.log("app.js error setting username 😅", err);
-    })
+    // getStorageData(keys.username).then((value) => {
+    //   return value
+    // }).catch((err) => {
+    //   console.log("app.js error setting username 😅", err);
+    // })
   }
 
   const handleAiToolVisible = (val) => {
     setLtAiTools(val);
-    localStorage.setItem('ltAiTools', val);
+    localStorageHelper.set(keys.ltAiToolsVisible, val)
   }
 
   return (
