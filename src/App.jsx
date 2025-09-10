@@ -9,7 +9,7 @@ import { localStorageHelper } from "./utils/localStorageHelper";
 import { keys } from "./constants/localStoragekeys";
 
 function App() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [userName, setUserName] = useState(localStorageHelper.get(keys.username));
   const [ltAiTools, setLtAiTools] = useState(() => {
     return localStorageHelper.get(keys.ltAiToolsVisible) || false

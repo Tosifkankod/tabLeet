@@ -3,6 +3,7 @@ import { aiToolsConstant } from "../constants/Aitools";
 import { keys } from '../constants/localStoragekeys';
 import { localStorageHelper } from '../utils/localStorageHelper';
 import { ThemeSwitcher } from "../context/ThemeSwitcher";
+import Shortcuts from "./Shortcuts";
 
 const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
     const [isThemeOpen, setThemeIsOpen] = useState(false);
@@ -86,54 +87,7 @@ const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
                     </div>
 
                     {/* SHORTCUT SETTING */}
-                    {/* <div className={`w-full h-150 rounded-lg  bg-gray-100 transition-all duration-2 border-1 p-2 `}>
-                        <div className="flex  gap-2 justify-between border-b-1 pb-1">
-                            <div className="flex gap-2 ">
-                                <p className="">R</p>
-                                <img width='20px' src="/assets/icons/addplus.svg" alt="" />
-                            </div>
-                            <div>
-                                <p className=" ">✕</p>
-                            </div>
-                        </div>
-                        <div className="border-1 mt-1">
-                            <div className="border-1 w-[80%]">
-                                <input type="text" />
-                                <input type="text" />
-                            </div>
-                            <div className="border-1 w-[20%]">
-
-                            </div>
-                            <div className="border-1 w-[80%]">
-                                <input type="text" />
-                                <input type="text" />
-                            </div>
-                            <div className="border-1 w-[20%]">
-
-                            </div>
-                            <div className="border-1 w-[80%]">
-                                <input type="text" />
-                                <input type="text" />
-                            </div>
-                            <div className="border-1 w-[20%]">
-
-                            </div>
-                            <div className="border-1 w-[80%]">
-                                <input type="text" />
-                                <input type="text" />
-                            </div>
-                            <div className="border-1 w-[20%]">
-
-                            </div>
-                            <div className="border-1 w-[80%]">
-                                <input type="text" />
-                                <input type="text" />
-                            </div>
-                            <div className="border-1 w-[20%]">
-
-                            </div>
-                        </div>
-                    </div> */}
+                    <Shortcuts shortcutSettingVisibility={shortcutSettingVisibility} />
 
 
                     {/* THEME SETTINGS */}
