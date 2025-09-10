@@ -1,8 +1,23 @@
-const Shortcuts = ({ shortcutSettingVisibility }) => {
+import { shortcuts as defaultShortuts, shortcuts } from "../constants/Shortcuts";
+
+const Shortcuts = ({ shortcutSettingVisibility, setShortcutSettingVisibility }) => {
+    const [shortcutsList, setShortcutsList] = useState([]);
 
     const handleShortcutSetting = () => {
         setShortcutSettingVisibility(!shortcutSettingVisibility)
         console.log(shortcutSettingVisibility);
+    }
+
+    const handleAdd = () => {
+        setShortcutsList([...setShortcutsList, { name: '', url: '', icon: '' }]);
+    }
+
+    const handleReset = () => {
+        setShortcutsList(defaultShortuts);
+    }
+
+    const handleClose = () => {
+        setShortcutSettingVisibility(!shortcutSettingVisibility);
     }
 
     return (
@@ -18,39 +33,11 @@ const Shortcuts = ({ shortcutSettingVisibility }) => {
                     </div>
                 </div>
 
-                <div className="h-full  overflow-y-scroll mt-1 tailwind-scrollbar-hide 
-                                [&::-webkit-scrollbar]:w-0 [&::-webkit-scrollbar-track]:bg-[#c6c6c6] ">
+                <div className="h-full  overflow-y-scroll mt-1 tailwind-scrollbar-hide [&::-webkit-scrollbar]:w-0 [&::-webkit-scrollbar-track]:bg-[#c6c6c6] ">
                     <div className="mt-2 mx-3 rounded-md flex p-1 text-md gap-1 items-center bg-gray-200">
                         <div className="flex flex-col w-[85%] gap-1">
-                            <input type="text" className=" bg-white rounded-sm text-gray-700 border-0 outline-0 px-2" placeholder="Shortcut" />
-                            <input type="text" className=" bg-white text-sm text-gray-700 rounded-sm border-0 outline-0 px-2" placeholder="https://www.shortcut.com" />
-                        </div>
-                        <div className="w-[40px] h-[40px] rounded-md flex bg-gray-300 items-center justify-center">
-                            <img src="/assets/icons/trash.svg" width={'20px'} className="text-red-400" alt="" />
-                        </div>
-                    </div>
-                    <div className="mt-2 mx-3 rounded-md flex p-1 text-md gap-1 items-center bg-gray-200">
-                        <div className="flex flex-col w-[85%] gap-1">
-                            <input type="text" className=" bg-white rounded-sm text-gray-700 border-0 outline-0 px-2" placeholder="Shortcut" />
-                            <input type="text" className=" bg-white text-sm text-gray-700 rounded-sm border-0 outline-0 px-2" placeholder="https://www.shortcut.com" />
-                        </div>
-                        <div className="w-[40px] h-[40px] rounded-md flex bg-gray-300 items-center justify-center">
-                            <img src="/assets/icons/trash.svg" width={'20px'} className="text-red-400" alt="" />
-                        </div>
-                    </div>
-                    <div className="mt-2 mx-3 rounded-md flex p-1 text-md gap-1 items-center bg-gray-200">
-                        <div className="flex flex-col w-[85%] gap-1">
-                            <input type="text" className=" bg-white rounded-sm text-gray-700 border-0 outline-0 px-2" placeholder="Shortcut" />
-                            <input type="text" className=" bg-white text-sm text-gray-700 rounded-sm border-0 outline-0 px-2" placeholder="https://www.shortcut.com" />
-                        </div>
-                        <div className="w-[40px] h-[40px] rounded-md flex bg-gray-300 items-center justify-center">
-                            <img src="/assets/icons/trash.svg" width={'20px'} className="text-red-400" alt="" />
-                        </div>
-                    </div>
-                    <div className="mt-2 mx-3 rounded-md flex p-1 text-md gap-1 items-center bg-gray-200">
-                        <div className="flex flex-col w-[85%] gap-1">
-                            <input type="text" className=" bg-white rounded-sm text-gray-700 border-0 outline-0 px-2" placeholder="Shortcut" />
-                            <input type="text" className=" bg-white text-sm text-gray-700 rounded-sm border-0 outline-0 px-2" placeholder="https://www.shortcut.com" />
+                            <input type="text" onChange={(e) => handleNameChange(index, e.target.value)} className=" bg-white rounded-sm text-gray-700 border-0 outline-0 px-2" placeholder="Shortcut" />
+                            <input type="text" onChange={(e) => handleUrlChange(index, e.target.value)} className=" bg-white text-sm text-gray-700 rounded-sm border-0 outline-0 px-2" placeholder="https://www.shortcut.com" />
                         </div>
                         <div className="w-[40px] h-[40px] rounded-md flex bg-gray-300 items-center justify-center">
                             <img src="/assets/icons/trash.svg" width={'20px'} className="text-red-400" alt="" />

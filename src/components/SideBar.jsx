@@ -87,7 +87,7 @@ const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
                     </div>
 
                     {/* SHORTCUT SETTING */}
-                    <Shortcuts shortcutSettingVisibility={shortcutSettingVisibility} />
+                    <Shortcuts setShortcutSettingVisibility={setShortcutSettingVisibility} shortcutSettingVisibility={shortcutSettingVisibility} />
 
 
                     {/* THEME SETTINGS */}
