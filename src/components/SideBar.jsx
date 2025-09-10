@@ -85,7 +85,7 @@ const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
                     </div>
 
                     {/* SHORTCUT SETTING */}
-                    <div className={`w-full h-150 rounded-lg  bg-gray-100 transition-all duration-2 border-1 p-2 `}>
+                    {/* <div className={`w-full h-150 rounded-lg  bg-gray-100 transition-all duration-2 border-1 p-2 `}>
                         <div className="flex  gap-2 justify-between border-b-1 pb-1">
                             <div className="flex gap-2 ">
                                 <p className="">R</p>
@@ -95,7 +95,7 @@ const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
                                 <p className=" ">✕</p>
                             </div>
                         </div>
-                        {/* <div className="border-1 mt-1">
+                        <div className="border-1 mt-1">
                             <div className="border-1 w-[80%]">
                                 <input type="text" />
                                 <input type="text" />
@@ -131,8 +131,8 @@ const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
                             <div className="border-1 w-[20%]">
 
                             </div>
-                        </div> */}
-                    </div>
+                        </div>
+                    </div> */}
 
 
                     {/* THEME SETTINGS */}
