@@ -14,6 +14,9 @@ function App() {
   const [ltAiTools, setLtAiTools] = useState(() => {
     return localStorageHelper.get(keys.ltAiToolsVisible) || false
   });
+  const [shortcutVisibility, setShortcutVisibility] = useState(() => {
+    return localStorageHelper.get(keys.ltshortcutVisible);
+  })
 
   const handlePropSetUsername = (user_name) => {
     // for dev
@@ -24,6 +27,8 @@ function App() {
     setLtAiTools(val);
     localStorageHelper.set(keys.ltAiToolsVisible, val)
   }
+
+  console.log("shortcutVisibility", shortcutVisibility);
 
   return (
     userName != null ? (
@@ -121,17 +126,21 @@ function App() {
           </div>
         </section>
 
-        <div className="flex gap-8 fixed bottom-[10%] sm:bottom-[3%]">
-          <div className="bg-[var(--color-surface)] p-3 rounded-full cursor-pointer">
-            <img src="assets/icons/youtube.png" className="size-6" />
+        {/* SHORTCUTS */}
+        {
+          shortcutVisibility && <div className="flex gap-8 fixed bottom-[10%] sm:bottom-[3%]">
+            <div className="bg-[var(--color-surface)] p-3 rounded-full cursor-pointer">
+              <img src="assets/icons/youtube.png" className="size-6" />
+            </div>
+            <div className="bg-[var(--color-surface)] p-3 rounded-full cursor-pointer">
+              <img src="assets/icons/chat-gpt.png" className="size-6" />
+            </div>
+            <div className="bg-[var(--color-surface)] p-3 rounded-full cursor-pointer">
+              <img src="assets/icons/gmail.png" className="size-6" />
+            </div>
           </div>
-          <div className="bg-[var(--color-surface)] p-3 rounded-full cursor-pointer">
-            <img src="assets/icons/chat-gpt.png" className="size-6" />
-          </div>
-          <div className="bg-[var(--color-surface)] p-3 rounded-full cursor-pointer">
-            <img src="assets/icons/gmail.png" className="size-6" />
-          </div>
-        </div>
+
+        }
 
         {/* SIDE-BAR-TOGGLE */}
         <div onClick={() => setIsOpen(true)} className="size-12 rounded-full bg-[#727272] grid place-items-center cursor-pointer fixed bottom-[3%] right-[3%]">

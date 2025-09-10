@@ -5,6 +5,10 @@ import { localStorageHelper } from '../utils/localStorageHelper';
 
 const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
     const [isThemeOpen, setThemeIsOpen] = useState(false);
+    const [shortcutVisibility, setShortcutVisibility] = useState(() => {
+        return localStorageHelper.get(keys.ltshortcutVisible) || false;
+    });
+    const [shortcutSettingVisibility, setShortcutSettingVisibility] = useState(false);
 
     const handleLtAiTools = (e) => {
         handleAiToolVisible(e.target.checked)
@@ -12,6 +16,16 @@ const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
         if (items == null || items == undefined) {
             localStorageHelper.set(keys.ltAiToolsItems, aiToolsConstant);
         }
+    }
+
+    const handleShortcutSetting = () => {
+        setShortcutSettingVisibility(!shortcutSettingVisibility)
+        console.log(shortcutSettingVisibility);
+    }
+
+    const handleLtShortcut = (e) => {
+        setShortcutVisibility(e.target.checked)
+        localStorageHelper.set(e.target.name, e.target.checked);
     }
 
     return (
@@ -29,10 +43,10 @@ const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
                 </div>
 
                 {/* NAVIGATION STARTS FROM HERE */}
-                <div className=" h-full px-4 py-8">
+                <div className=" h-full px-4 py-8 flex flex-col gap-2">
 
                     {/* AI TOOLS */}
-                    <div className="nav p-2">
+                    <div className="nav p-2 bg-gray-100 rounded-lg">
                         <div className="flex w-full">
                             <div className="w-[80%] ">
                                 <h1 className="text-2xl font-medium">Ai Tools</h1>
@@ -45,11 +59,81 @@ const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
                                 </label>
                             </div>
                         </div>
-                        <div className="mt-2">
-                            <h1 className="text-2xl font-medium">Edit AI Tools</h1>
+                    </div>
 
+                    {/* SHORTCUTS */}
+                    <div className="nav p-2 bg-gray-100 rounded-lg">
+                        <div className="flex w-full">
+                            <div className="w-[80%] ">
+                                <h1 className="text-2xl font-medium">Shortcuts</h1>
+                                <p>show shortcuts</p>
+                            </div>
+                            <div className=" mr-1 flex items-center justify-center">
+                                {
+                                    shortcutVisibility && <button onClick={handleShortcutSetting} className="p-2 cursor-pointer rounded-md bg-gray-200">
+                                        <img width={'20px'} src="/assets/icons/equalizer.svg" alt="" />
+                                    </button>
+                                }
+                            </div>
+                            <div className="w-[20%] flex items-center justify-center">
+                                <label className="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" value={shortcutVisibility} checked={shortcutVisibility} name={keys.ltshortcutVisible} onChange={handleLtShortcut} className="sr-only peer" />
+                                    <div className="w-14 h-8 bg-gray-300 rounded-full peer peer-checked:bg-[#FFA150] peer-focus:ring-2 peer-focus:ring-[#FFA150] after:content-[''] after:absolute after:top-1 after:left-1 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:after:translate-x-6"></div>
+                                </label>
+                            </div>
                         </div>
                     </div>
+
+                    {/* SHORTCUT SETTING */}
+                    <div className={`w-full h-150 rounded-lg  bg-gray-100 transition-all duration-2 border-1 p-2 `}>
+                        <div className="flex  gap-2 justify-between border-b-1 pb-1">
+                            <div className="flex gap-2 ">
+                                <p className="">R</p>
+                                <img width='20px' src="/assets/icons/addplus.svg" alt="" />
+                            </div>
+                            <div>
+                                <p className=" ">✕</p>
+                            </div>
+                        </div>
+                        {/* <div className="border-1 mt-1">
+                            <div className="border-1 w-[80%]">
+                                <input type="text" />
+                                <input type="text" />
+                            </div>
+                            <div className="border-1 w-[20%]">
+
+                            </div>
+                            <div className="border-1 w-[80%]">
+                                <input type="text" />
+                                <input type="text" />
+                            </div>
+                            <div className="border-1 w-[20%]">
+
+                            </div>
+                            <div className="border-1 w-[80%]">
+                                <input type="text" />
+                                <input type="text" />
+                            </div>
+                            <div className="border-1 w-[20%]">
+
+                            </div>
+                            <div className="border-1 w-[80%]">
+                                <input type="text" />
+                                <input type="text" />
+                            </div>
+                            <div className="border-1 w-[20%]">
+
+                            </div>
+                            <div className="border-1 w-[80%]">
+                                <input type="text" />
+                                <input type="text" />
+                            </div>
+                            <div className="border-1 w-[20%]">
+
+                            </div>
+                        </div> */}
+                    </div>
+
 
                     {/* THEME SETTINGS */}
                     <div onClick={() => setThemeIsOpen((prev) => !prev)} className="border border-transparent hover:border-[#D1D1D1] rounded-md p-1.5 hover:bg-[#E2E2E2] w-fit flex items-center gap-1.5 transition-all duration-300 cursor-pointer">
@@ -113,7 +197,7 @@ const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 
