@@ -42,7 +42,7 @@ function App() {
                   src="/assets/images/dummy-profile.jpg"
                   className="rounded-xl size-[100px]"
                 />
-                <div className="text-sm flex flex-col gap-2">
+                <div className="text-sm flex flex-col gap-2 text-[var(--color-primary)]">
                   <p>tosifkandkod</p>
                   <p>Rank: 737,485</p>
                   <button className="bg-[var(--color-primary)] rounded-sm text-white py-1 px-6 cursor-pointer text-xs">
@@ -60,7 +60,7 @@ function App() {
             <div className="flex flex-col md:flex-row gap-2">
               <Heatmap />
 
-              <div className="hidden sm:block space-y-2">
+              <div className="hidden sm:block space-y-2 text-[var(--color-primary)]">
                 <div className="grid grid-cols-2 gap-2 ">
                   <div className="bg-[var(--color-surface)] p-2 px-8 rounded-xl text-center">
                     <strong className="text-[#8da96c]">Easy</strong>
@@ -103,21 +103,23 @@ function App() {
 
             <div className="bg-[var(--color-surface)] rounded-full mt-2 py-1.5 px-1.5 flex gap-1">
               <button className="cursor-pointer ml-2 min-w-6">
-                <img
-                  src="assets/icons/magnifier.png"
-                  className="object-contain size-6"
-                />
+                <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke={"var(--color-primary)"} stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
               </button>
               <input
                 type="text"
-                className="w-full rounded-xl outline-0 px-2"
+                className="w-full rounded-xl outline-0 px-2 placeholder:text-[var(--color-primary)]"
                 placeholder="Type here..."
               />
               <button className="bg-[var(--color-button)] rounded-full min-w-10 h-10 flex items-center justify-center cursor-pointer">
-                <img
-                  src="assets/icons/voice.png"
-                  className="rounded-full size-5"
-                />
+                <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                  <g id="SVGRepo_bgCarrier" stroke-width="0" />
+
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" />
+
+                  <g id="SVGRepo_iconCarrier"> <path d="M8 5C8 2.79086 9.79086 1 12 1C14.2091 1 16 2.79086 16 5V12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12V5Z" fill={`var(--color-primary)`} /> <path d="M6.25 11.8438V12C6.25 13.525 6.8558 14.9875 7.93414 16.0659C9.01247 17.1442 10.475 17.75 12 17.75C13.525 17.75 14.9875 17.1442 16.0659 16.0659C17.1442 14.9875 17.75 13.525 17.75 12V11.8438C17.75 11.2915 18.1977 10.8438 18.75 10.8438H19.25C19.8023 10.8438 20.25 11.2915 20.25 11.8437V12C20.25 14.188 19.3808 16.2865 17.8336 17.8336C16.5842 19.0831 14.9753 19.8903 13.25 20.1548V22C13.25 22.5523 12.8023 23 12.25 23H11.75C11.1977 23 10.75 22.5523 10.75 22V20.1548C9.02471 19.8903 7.41579 19.0831 6.16637 17.8336C4.61919 16.2865 3.75 14.188 3.75 12V11.8438C3.75 11.2915 4.19772 10.8438 4.75 10.8438H5.25C5.80228 10.8438 6.25 11.2915 6.25 11.8438Z" fill={`var(--color-primary)`} /> </g>
+
+                </svg>
               </button>
               <button className="bg-[var(--color-button)] text-[var(--color-primary)] rounded-full px-6 py-2 cursor-pointer">
                 Search

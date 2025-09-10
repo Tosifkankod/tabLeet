@@ -6,19 +6,52 @@
 }
 
 :root {
-    --color-background: #ffffff;
-    /* Page bg */
-    --color-surface: #d9d9d9;
-    /* Card/section bg */
-
-    --color-primary: #313131;
-    /* Heading text, links, primary button bg */
+    --color-background: #ffffff; /* Page bg */
+    --color-surface: #d9d9d9; /* Card/section bg */
+    --color-primary: #313131; /* Heading text, links, primary button bg */
     --color-button: #c6c6c6;
-
-    --color-secondary: #4d4d4d;
-    /* Paragraph text, less important buttons */
-    --color-muted: #c5c5c5;
-    /* Borders, disabled text, placeholders */
+    --color-secondary: #4d4d4d; /* Paragraph text, less important buttons */
+    --color-muted: #c5c5c5; /* Borders, disabled text, placeholders */
+}
+.theme-dracula {
+  --color-background: #282a36;       
+  --color-surface: #44475a;          
+  --color-primary: #bd93f9;
+  --color-button: #ff79c6;
+  --color-secondary: #ff79c6;        
+  --color-muted: #6272a4;          
+}
+.theme-laalpari {
+  --color-background: #1e0f0f;       
+  --color-surface: #4c1a1a;          
+  --color-primary: #ff2e63;
+  --color-button: #ff595e;
+  --color-secondary: #800f2f;        
+  --color-muted: #a46262;          
+}
+.theme-panduba {
+  --color-background: #e0f7fa;       
+  --color-surface: #b2ebf2;          
+  --color-primary: #00796b;
+  --color-button: #4dd0e1;
+  --color-secondary: #004d40;        
+  --color-muted: #9ae9f0;          
+}
+.theme-panduba {
+  --color-background: #e0f7fa;       
+  --color-surface: #b2ebf2;          
+  --color-primary: #00796b;
+  --color-button: #4dd0e1;
+  --color-secondary: #004d40;        
+  --color-muted: #9ae9f0;          
+}
+.theme-paimon {
+  --color-background: #f6f8ff;       
+  --color-surface: #e0e7ff;          
+  --color-primary: #7f5af0;
+  --color-button: #c0aaff;
+  --color-secondary: #5a4fcf;        
+  --color-muted: #eed8f5;          
 }
 
 /* Custom scrollbar styling for smooth sliding */

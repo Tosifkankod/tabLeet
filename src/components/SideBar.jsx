@@ -2,6 +2,7 @@ import { useState } from "react";
 import { aiToolsConstant } from "../constants/Aitools";
 import { keys } from '../constants/localStoragekeys';
 import { localStorageHelper } from '../utils/localStorageHelper';
+import { ThemeSwitcher } from "../context/ThemeSwitcher";
 
 const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
     const [isThemeOpen, setThemeIsOpen] = useState(false);
@@ -36,7 +37,7 @@ const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
                     className="fixed inset-0 backdrop-blur-xsx z-40"
                 ></div>
             )}
-            <div className={`fixed top-0 right-0 h-full w-90 rounded-tl-xl rounded-bl-xl bg-white shadow-lg z-50 transform transition-transform duration-300 ${isOpen ? "-translate-x-0" : "-translate-x-[-100%]"}`}>
+            <div className={`fixed top-0 right-0 h-full w-90 rounded-tl-xl rounded-bl-xl bg-[var(--color-background)] shadow-lg z-50 transform transition-transform duration-300 ${isOpen ? "-translate-x-0" : "-translate-x-[-100%]"}`}>
                 <div className="flex justify-center items-center gap-3 p-4">
                     <img src="/assets/icons/tab-leet-icon.svg" width='40px' className=' ' />
                     <h1 className="text-4xl font-medium">TabLeet</h1>
@@ -46,7 +47,7 @@ const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
                 <div className=" h-full px-4 py-8 flex flex-col gap-2">
 
                     {/* AI TOOLS */}
-                    <div className="nav p-2 bg-gray-100 rounded-lg">
+                    <div className="nav p-2 bg-[var(--color-surface)] text-[var(--color-primary)] rounded-lg">
                         <div className="flex w-full">
                             <div className="w-[80%] ">
                                 <h1 className="text-2xl font-medium">Ai Tools</h1>
@@ -62,7 +63,7 @@ const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
                     </div>
 
                     {/* SHORTCUTS */}
-                    <div className="nav p-2 bg-gray-100 rounded-lg">
+                    <div className="nav p-2 bg-[var(--color-surface)] text-[var(--color-primary)] rounded-lg">
                         <div className="flex w-full">
                             <div className="w-[80%] ">
                                 <h1 className="text-2xl font-medium">Shortcuts</h1>
@@ -146,55 +147,12 @@ const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
                         <img src="./assets/icons/down-arrow.png" alt="down-icon" className="size-3" />
                     </div>
 
-                    <div className={`rounded-md w-fit max-h-[calc(100vh-8.6rem)] overflow-y-auto border-[0.5px] border-white/5 outline-[0.5px] outline-black/5 mt-2 shadow-2xl p-4 ${isThemeOpen ? 'opacity-0' : 'opacity-100'} transition-all duration-300`}>
-                        <p className="text-xs mb-4">Theme</p>
+                    {<div className={`rounded-md w-fit max-h-[calc(100vh-8.6rem)] overflow-y-auto border-[0.5px] border-white/5 outline-[0.5px] outline-black/5 mt-2 shadow-2xl p-4 ${isThemeOpen ? 'opacity-0' : 'opacity-100'} transition-all duration-300`}>
+                        <p className="text-xs mb-4 text-[var(--color-primary)]">Theme</p>
                         <ul className="w-56">
-                            <li className="flex items-center gap-2 my-2 p-1 hover:bg-[#E2E2E2] rounded-sm cursor-pointer">
-                                <button className="">
-                                    <div className="grid grid-cols-2 gap-0.5 rounded-sm p-1 shadow-sm bg-white">
-                                        <div className="size-1 rounded-full bg-amber-200"></div>
-                                        <div className="size-1 rounded-full bg-violet-200"></div>
-                                        <div className="size-1 rounded-full bg-pink-200"></div>
-                                        <div className="size-1 rounded-full bg-red-200"></div>
-                                    </div>
-                                </button>
-                                <span className="text-xs">Dracula</span>
-                            </li>
-                            <li className="flex items-center gap-2 my-2 p-1 hover:bg-[#E2E2E2] rounded-sm cursor-pointer">
-                                <button className="">
-                                    <div className="grid grid-cols-2 gap-0.5 rounded-md p-1 shadow-sm bg-white">
-                                        <div className="size-1 rounded-full bg-green-200"></div>
-                                        <div className="size-1 rounded-full bg-amber-200"></div>
-                                        <div className="size-1 rounded-full bg-yellow-200"></div>
-                                        <div className="size-1 rounded-full bg-blue-200"></div>
-                                    </div>
-                                </button>
-                                <span className="text-xs">Laal pari</span>
-                            </li>
-                            <li className="flex items-center gap-2 my-2 p-1 hover:bg-[#E2E2E2] rounded-sm cursor-pointer">
-                                <button className="">
-                                    <div className="grid grid-cols-2 gap-0.5 rounded-md p-1 shadow-sm bg-white">
-                                        <div className="size-1 rounded-full bg-red-200"></div>
-                                        <div className="size-1 rounded-full bg-pink-200"></div>
-                                        <div className="size-1 rounded-full bg-cyan-200"></div>
-                                        <div className="size-1 rounded-full bg-amber-200"></div>
-                                    </div>
-                                </button>
-                                <span className="text-xs">Panduba</span>
-                            </li>
-                            <li className="flex items-center gap-2 my-2 p-1 hover:bg-[#E2E2E2] rounded-md cursor-pointer">
-                                <button className="">
-                                    <div className="grid grid-cols-2 gap-0.5 rounded-md p-1 shadow-sm bg-white">
-                                        <div className="size-1 rounded-full bg-cyan-200"></div>
-                                        <div className="size-1 rounded-full bg-black"></div>
-                                        <div className="size-1 rounded-full bg-teal-200"></div>
-                                        <div className="size-1 rounded-full bg-pink-200"></div>
-                                    </div>
-                                </button>
-                                <span className="text-xs">Paimon</span>
-                            </li>
+                            <ThemeSwitcher />
                         </ul>
-                    </div>
+                    </div>}
                 </div>
             </div>
         </div >

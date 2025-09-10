@@ -30,8 +30,8 @@ export default function LiveClock() {
 
   return (
     <div className="space-y-1">
-      <div className="text-5xl md:text-9xl">{time}</div>
-      <div className="text-2xl md:text-3xl">{date}</div>
+      <div className="text-5xl md:text-9xl text-[var(--color-primary)]">{time}</div>
+      <div className="text-2xl md:text-3xl text-[var(--color-primary)]">{date}</div>
     </div>
   );
 }
