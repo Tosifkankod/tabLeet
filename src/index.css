@@ -5,10 +5,6 @@
   scroll-behavior: smo;
 }
 
-body {
-  background-image: url('https://images.pexels.com/photos/338936/pexels-photo-338936.jpeg');
-}
-
 :root {
   --color-background: #ffffff;
   /* Page bg */

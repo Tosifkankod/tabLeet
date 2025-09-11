@@ -18,7 +18,7 @@ const reducer = (state, action) => {
     }
 }
 
-const settingContext = createContext();
+const SettingContext = createContext();
 
 export const SettingProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
@@ -30,15 +30,15 @@ export const SettingProvider = ({ children }) => {
     }
 
     return (
-        <ToggleContext.Provider value={{ state, actions }} >
+        <SettingContext.Provider value={{ state, actions }} >
             {children}
-        </ToggleContext.Provider>
+        </SettingContext.Provider>
     )
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const useSettings = () => {
-    const context = useContext(settingContext);
+    const context = useContext(SettingContext);
     if (!context) {
         alert('toggle context');
     }
