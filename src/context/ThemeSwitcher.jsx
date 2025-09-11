@@ -62,9 +62,9 @@ export const ThemeSwitcher = () => {
                                     <div className={`size-1 rounded-full`} style={{ backgroundColor: theme.secondary }}></div>
                                 </div>
                             </button>
-                            <span className={`text-xs`} style={{color: theme.primary}}>{theme.name}</span>
+                            <span className={`text-xs`} style={{ color: theme.primary }}>{theme.name}</span>
                         </div>
-                         {/* <img src="/assets/icons/tick.svg" alt="tick-icon" } /> */}
+                        {/* <img src="/assets/icons/tick.svg" alt="tick-icon" } /> */}
 
 
                         <svg className={`size-8 ${currentTheme == theme.name.replace(" ", "").toLowerCase() ? "visible" : "invisible"}`} fill={theme.primary} width="800px" height="800px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M760 380.4l-61.6-61.6-263.2 263.1-109.6-109.5L264 534l171.2 171.2L760 380.4z" /></svg>

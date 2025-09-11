@@ -4,6 +4,8 @@ import { keys } from '../constants/localStoragekeys';
 import { localStorageHelper } from '../utils/localStorageHelper';
 import { ThemeSwitcher } from "../context/ThemeSwitcher";
 import Shortcuts from "./Shortcuts";
+import { useSettings } from "../context/SettingContext";
+
 
 const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
     const [isThemeOpen, setThemeIsOpen] = useState(false);
