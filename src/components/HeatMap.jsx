@@ -1,3 +1,5 @@
+import React from "react";
+
 const levels = [
   "bg-gray-200",
   "bg-green-200",
@@ -6,7 +8,7 @@ const levels = [
   "bg-green-800",
 ];
 
-export default function Heatmap() {
+function Heatmap() {
   const today = new Date();
   const yearStart = new Date(today.getFullYear(), 0, 1);
 
@@ -52,3 +54,5 @@ export default function Heatmap() {
     </div>
   );
 }
+
+export default React.memo(Heatmap)
