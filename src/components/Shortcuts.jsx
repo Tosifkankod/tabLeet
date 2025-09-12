@@ -18,7 +18,7 @@ const Shortcuts = ({ shortcutSettingToggle, handleShortcutSetting }) => {
     } = useShortcuts();
 
     return (
-        <div className={`transition-all w-full mb-8 duration-700 ease-in-out overflow-hidden bg-gray-100  rounded-xl  ${shortcutSettingToggle ? "h-[3500px]" : "h-0"}`}>
+        <div className={`transition-all w-full  border-0 duration-700 ease-in-out overflow-hidden bg-gray-100 rounded-xl  ${shortcutSettingToggle ? "h-[3500px] mb-2 " : "h-0 "}`}>
             <div className="p-2 rounded-xl h-full">
                 <div className="flex h-[8%] items-center  border-green-300 justify-between ">
                     <div className="flex items-center ">

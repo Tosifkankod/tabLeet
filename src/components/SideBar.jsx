@@ -89,12 +89,33 @@ const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
                     </div>
 
                     {/* SHORTCUT SETTING */}
-                    <Shortcuts shortcutSettingToggle={shortcutSettingToggle} handleShortcutSetting={handleShortcutSetting}
-                    />
+                    {
+                        <Shortcuts shortcutSettingToggle={shortcutSettingToggle} handleShortcutSetting={handleShortcutSetting} />
+                    }
+
+                    <div className="nav p-2 bg-[var(--color-surface)] -mt-2 text-[var(--color-primary)] rounded-lg">
+                        <div className="flex w-full">
+                            <div className="w-[80%] ">
+                                <h1 className="text-2xl font-medium">Themes</h1>
+                                <p>select theme</p>
+                            </div>
+                            <div className="w-[20%] flex items-center justify-center">
+                                <div onClick={() => setThemeIsOpen((prev) => !prev)} className="border  hover:border-[#D1D1D1] rounded-md p-1.5 hover:bg-[#E2E2E2] w-fit flex items-center gap-1.5 transition-all duration-300 cursor-pointer">
+                                    <div className="bg-white border border-[#D1D1D1] rounded-md grid grid-cols-2 gap-0.5 p-1">
+                                        <div className="size-1 rounded-full bg-red-600"></div>
+                                        <div className="size-1 rounded-full bg-cyan-600"></div>
+                                        <div className="size-1 rounded-full bg-purple-600"></div>
+                                        <div className="size-1 rounded-full bg-pink-600"></div>
+                                    </div>
+                                    <img src="./assets/icons/down-arrow.png" alt="down-icon" className="size-3" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
                     {/* THEME SETTINGS */}
-                    <div onClick={() => setThemeIsOpen((prev) => !prev)} className="border border-transparent hover:border-[#D1D1D1] rounded-md p-1.5 hover:bg-[#E2E2E2] w-fit flex items-center gap-1.5 transition-all duration-300 cursor-pointer">
+                    {/* <div onClick={() => setThemeIsOpen((prev) => !prev)} className="border  hover:border-[#D1D1D1] rounded-md p-1.5 hover:bg-[#E2E2E2] w-fit flex items-center gap-1.5 transition-all duration-300 cursor-pointer">
                         <div className="bg-white border border-[#D1D1D1] rounded-md grid grid-cols-2 gap-0.5 p-1">
                             <div className="size-1 rounded-full bg-red-600"></div>
                             <div className="size-1 rounded-full bg-cyan-600"></div>
@@ -102,14 +123,15 @@ const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
                             <div className="size-1 rounded-full bg-pink-600"></div>
                         </div>
                         <img src="./assets/icons/down-arrow.png" alt="down-icon" className="size-3" />
-                    </div>
+                    </div> */}
 
-                    {<div className={`rounded-md w-fit max-h-[calc(100vh-8.6rem)] overflow-y-auto border-[0.5px] border-white/5 outline-[0.5px] outline-black/5 mt-2 shadow-2xl p-4 ${isThemeOpen ? 'opacity-0' : 'opacity-100'} transition-all duration-300`}>
-                        <p className="text-xs mb-4 text-[var(--color-primary)]">Theme</p>
-                        <ul className="w-56">
-                            <ThemeSwitcher />
-                        </ul>
-                    </div>}
+                    {
+                        <div className={`rounded-md w-full h-60 max-h-[calc(100vh-8.6rem)] overflow-y-auto border-[0.5px] border-white/5 outline-[0.5px] outline-black/5 mt-0 p-4 ${isThemeOpen ? 'opacity-0' : 'opacity-100'} transition-all duration-300`}>
+                            <p className="text-xs mb-4 text-[var(--color-primary)]">Theme</p>
+                            <ul className="w-full">
+                                <ThemeSwitcher />
+                            </ul>
+                        </div>}
                 </div>
             </div>
         </div >

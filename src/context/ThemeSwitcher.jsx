@@ -50,7 +50,7 @@ export const ThemeSwitcher = () => {
         <>
             {
                 themes.map((theme) =>
-                    <li key={theme.name.trim().toLowerCase()} onClick={() => setTheme(theme.name.replace(" ", "").toLowerCase())} className="flex items-center justify-between my-2 p-1 hover:bg-[#E2E2E2] rounded-sm cursor-pointer">
+                    <li key={theme.name.trim().toLowerCase()} onClick={() => setTheme(theme.name.replace(" ", "").toLowerCase())} className="flex w-full items-center justify-between my-2 p-1 hover:bg-[#E2E2E2] rounded-sm cursor-pointer">
                         <div className='flex items-center gap-2'>
                             <button>
                                 <div className={`grid grid-cols-2 gap-0.5 rounded-sm p-1 shadow-sm`} style={{
