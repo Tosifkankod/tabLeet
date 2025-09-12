@@ -5,11 +5,24 @@ import SideBar from "./components/SideBar";
 import { useEffect, useState } from "react";
 import { setStorageData, getStorageData } from "./utils/storage";
 import AiTools from "./components/AiTools";
+<<<<<<< Updated upstream
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [userName, setUserName] = useState(localStorage.getItem('username'));
+=======
+import { localStorageHelper } from "./utils/localStorageHelper";
+import { keys } from "./constants/localStoragekeys";
+import { useSettings } from "./context/SettingContext";
 
+function App() {
+  const { state, toggle } = useSettings();
+  const [userName, setUserName] = useState(localStorageHelper.get(keys.username));
+  const [isOpen, setIsOpen] = useState(true);
+>>>>>>> Stashed changes
+
+
+  console.log(state);
   const handlePropSetUsername = (user_name) => {
     // for dev
     // localStorage.setItem('username', user_name)
@@ -24,6 +37,7 @@ function App() {
     })
   }
 
+<<<<<<< Updated upstream
   function handleGetUsername() {
     // for dev
     // return localStorage.getItem('username')
@@ -35,6 +49,8 @@ function App() {
     })
   }
 
+=======
+>>>>>>> Stashed changes
   return (
     userName != null ? (
       <main className="min-h-screen flex flex-col items-center justify-center gap-20 px-10">
@@ -131,9 +147,24 @@ function App() {
           </div>
         </section>
 
+<<<<<<< Updated upstream
         <div className="flex gap-8 fixed bottom-[10%] sm:bottom-[3%]">
           <div className="bg-[#d9d9d9] p-3 rounded-full cursor-pointer">
             <img src="assets/icons/youtube.png" className="size-6" />
+=======
+        {/* SHORTCUTS */}
+        {
+          state.ltShortcutsToggle && <div className="flex gap-8 fixed bottom-[10%] sm:bottom-[3%]">
+            <div className="bg-[var(--color-surface)] p-3 rounded-full cursor-pointer">
+              <img src="assets/icons/youtube.png" className="size-6" />
+            </div>
+            <div className="bg-[var(--color-surface)] p-3 rounded-full cursor-pointer">
+              <img src="assets/icons/chat-gpt.png" className="size-6" />
+            </div>
+            <div className="bg-[var(--color-surface)] p-3 rounded-full cursor-pointer">
+              <img src="assets/icons/gmail.png" className="size-6" />
+            </div>
+>>>>>>> Stashed changes
           </div>
           <div className="bg-[#d9d9d9] p-3 rounded-full cursor-pointer">
             <img src="assets/icons/chat-gpt.png" className="size-6" />
@@ -150,8 +181,15 @@ function App() {
         </div>
 
         <div className="flex absolute top-4 left-4 gap-4 ">
+<<<<<<< Updated upstream
           <AiTools />
           <div className="p-2 bg-[#d9d9d9] rounded-xl h-[35px] cursor-pointer text-sm px-4 ">
+=======
+          {
+            state.ltAiToolsToggle && <AiTools heading={'Ai Tools'} subHeading={"showAiTools"} />
+          }
+          <div className="p-2 bg-[var(--color-surface)] rounded-xl h-[35px] cursor-pointer text-sm px-4 ">
+>>>>>>> Stashed changes
             Courses
           </div>
         </div>

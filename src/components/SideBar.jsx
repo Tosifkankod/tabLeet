@@ -1,5 +1,29 @@
 
 const SideBar = ({ isOpen, setIsOpen }) => {
+<<<<<<< Updated upstream
+=======
+    const { state, toggle } = useSettings();
+    const [isThemeOpen, setThemeIsOpen] = useState(false);
+
+    const handleLtAiToolsToggle = () => {
+        const newValue = !state.ltAiToolsToggle;
+        toggle(keys.ltAiToolsToggle);
+
+        let items = localStorageHelper.get(keys.ltAiToolsItems);
+        if ((items == null || items == undefined) && newValue) {
+            localStorageHelper.set(keys.ltAiToolsItems, aiToolsConstant);
+        }
+    };
+
+    const handleShortcutSetting = () => {
+        
+    }
+
+    const handleLtShortcutToggle = (e) => {
+        const newValue = !state.ltShortcutsToggle;
+        toggle(keys.ltShortcutsToggle);
+    }
+>>>>>>> Stashed changes
 
     return (
         <div className="relative ">
@@ -17,6 +41,7 @@ const SideBar = ({ isOpen, setIsOpen }) => {
 
                 <div className=" h-full px-4 py-8">
 
+<<<<<<< Updated upstream
                     <div className="nav p-2 flex">
                         <div className="w-[80%] ">
                             <h1 className="text-2xl font-medium">Shortcuts</h1>
@@ -29,6 +54,68 @@ const SideBar = ({ isOpen, setIsOpen }) => {
                             </label>
                         </div>
                     </div>
+=======
+                    {/* AI TOOLS */}
+                    <div className="nav p-2 bg-[var(--color-surface)] text-[var(--color-primary)] rounded-lg">
+                        <div className="flex w-full">
+                            <div className="w-[80%] ">
+                                <h1 className="text-2xl font-medium">Ai Tools</h1>
+                                <p>show ai tools</p>
+                            </div>
+                            <div className="w-[20%] flex items-center justify-center">
+                                <label className="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" checked={state.ltAiToolsToggle} name={keys.ltAiToolsToggle} onChange={handleLtAiToolsToggle} className="sr-only peer" />
+                                    <div className="w-14 h-8 bg-gray-300 rounded-full peer peer-checked:bg-[#FFA150] peer-focus:ring-2 peer-focus:ring-[#FFA150] after:content-[''] after:absolute after:top-1 after:left-1 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:after:translate-x-6"></div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* SHORTCUTS */}
+                    <div className="nav p-2 bg-[var(--color-surface)] text-[var(--color-primary)] rounded-lg">
+                        <div className="flex w-full">
+                            <div className="w-[80%] ">
+                                <h1 className="text-2xl font-medium">Shortcuts</h1>
+                                <p>show shortcuts</p>
+                            </div>
+                            <div className=" mr-1 flex items-center justify-center">
+                                {
+                                    state.ltShortcutsToggle && <button onClick={handleShortcutSetting} className="p-2 cursor-pointer rounded-md bg-gray-200">
+                                        <img width={'20px'} src="/assets/icons/equalizer.svg" alt="" />
+                                    </button>
+                                }
+                            </div>
+                            <div className="w-[20%] flex items-center justify-center">
+                                <label className="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" value={state.ltShortcutsToggle} checked={state.ltShortcutsToggle} name={keys.ltshortcutVisible} onChange={handleLtShortcutToggle} className="sr-only peer" />
+                                    <div className="w-14 h-8 bg-gray-300 rounded-full peer peer-checked:bg-[#FFA150] peer-focus:ring-2 peer-focus:ring-[#FFA150] after:content-[''] after:absolute after:top-1 after:left-1 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:after:translate-x-6"></div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* SHORTCUT SETTING */}
+                    <Shortcuts />
+
+
+                    {/* THEME SETTINGS */}
+                    <div onClick={() => setThemeIsOpen((prev) => !prev)} className="border border-transparent hover:border-[#D1D1D1] rounded-md p-1.5 hover:bg-[#E2E2E2] w-fit flex items-center gap-1.5 transition-all duration-300 cursor-pointer">
+                        <div className="bg-white border border-[#D1D1D1] rounded-md grid grid-cols-2 gap-0.5 p-1">
+                            <div className="size-1 rounded-full bg-red-600"></div>
+                            <div className="size-1 rounded-full bg-cyan-600"></div>
+                            <div className="size-1 rounded-full bg-purple-600"></div>
+                            <div className="size-1 rounded-full bg-pink-600"></div>
+                        </div>
+                        <img src="./assets/icons/down-arrow.png" alt="down-icon" className="size-3" />
+                    </div>
+
+                    {<div className={`rounded-md w-fit max-h-[calc(100vh-8.6rem)] overflow-y-auto border-[0.5px] border-white/5 outline-[0.5px] outline-black/5 mt-2 shadow-2xl p-4 ${isThemeOpen ? 'opacity-0' : 'opacity-100'} transition-all duration-300`}>
+                        <p className="text-xs mb-4 text-[var(--color-primary)]">Theme</p>
+                        <ul className="w-56">
+                            <ThemeSwitcher />
+                        </ul>
+                    </div>}
+>>>>>>> Stashed changes
                 </div>
             </div>
         </div>
