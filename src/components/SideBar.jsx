@@ -9,27 +9,27 @@ import { useSettings } from "../context/SettingContext";
 
 const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
     const [isThemeOpen, setThemeIsOpen] = useState(false);
-    const [shortcutVisibility, setShortcutVisibility] = useState(() => {
-        return localStorageHelper.get(keys.ltshortcutVisible) || false;
-    });
-    const [shortcutSettingVisibility, setShortcutSettingVisibility] = useState(false);
+    const { state, toggle } = useSettings();
+    const [shortcutSettingToggle, setShortcutSettingToggle] = useState(false);
 
-    const handleLtAiTools = (e) => {
-        handleAiToolVisible(e.target.checked)
+
+    const handleLtAiToolsToggle = (e) => {
+        const newValue = !state.ltAiToolsToggle;
+        toggle(keys.ltAiToolsToggle);
+
         let items = localStorageHelper.get(keys.ltAiToolsItems);
-        if (items == null || items == undefined) {
+        if ((items == null || items == undefined) && newValue) {
             localStorageHelper.set(keys.ltAiToolsItems, aiToolsConstant);
         }
     }
 
-    const handleShortcutSetting = () => {
-        setShortcutSettingVisibility(!shortcutSettingVisibility)
-        console.log(shortcutSettingVisibility);
+    const handleShortcutToggle = () => {
+        const newValue = !state.ltShortcutsToggle;
+        toggle(keys.ltShortcutsToggle);
     }
 
-    const handleLtShortcut = (e) => {
-        setShortcutVisibility(e.target.checked)
-        localStorageHelper.set(e.target.name, e.target.checked);
+    const handleShortcutSetting = () => {
+        setShortcutSettingToggle(!shortcutSettingToggle)
     }
 
     return (
@@ -58,7 +58,7 @@ const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
                             </div>
                             <div className="w-[20%] flex items-center justify-center">
                                 <label className="relative inline-flex items-center cursor-pointer">
-                                    <input type="checkbox" checked={ltAiTools} name="ltAiTools" onChange={handleLtAiTools} className="sr-only peer" />
+                                    <input type="checkbox" checked={state.ltAiToolsToggle} name={keys.ltAiToolsToggle} onChange={handleLtAiToolsToggle} className="sr-only peer" />
                                     <div className="w-14 h-8 bg-gray-300 rounded-full peer peer-checked:bg-[#FFA150] peer-focus:ring-2 peer-focus:ring-[#FFA150] after:content-[''] after:absolute after:top-1 after:left-1 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:after:translate-x-6"></div>
                                 </label>
                             </div>
@@ -74,14 +74,14 @@ const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
                             </div>
                             <div className=" mr-1 flex items-center justify-center">
                                 {
-                                    shortcutVisibility && <button onClick={handleShortcutSetting} className="p-2 cursor-pointer rounded-md bg-gray-200">
+                                    state.ltShortcutsToggle && <button onClick={handleShortcutSetting} className="p-2 cursor-pointer rounded-md bg-gray-200">
                                         <img width={'20px'} src="/assets/icons/equalizer.svg" alt="" />
                                     </button>
                                 }
                             </div>
                             <div className="w-[20%] flex items-center justify-center">
                                 <label className="relative inline-flex items-center cursor-pointer">
-                                    <input type="checkbox" value={shortcutVisibility} checked={shortcutVisibility} name={keys.ltshortcutVisible} onChange={handleLtShortcut} className="sr-only peer" />
+                                    <input type="checkbox" value={state.ltShortcutsToggle} checked={state.ltShortcutsToggle} name={keys.ltShortcutsToggle} onChange={handleShortcutToggle} className="sr-only peer" />
                                     <div className="w-14 h-8 bg-gray-300 rounded-full peer peer-checked:bg-[#FFA150] peer-focus:ring-2 peer-focus:ring-[#FFA150] after:content-[''] after:absolute after:top-1 after:left-1 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:after:translate-x-6"></div>
                                 </label>
                             </div>
@@ -89,7 +89,8 @@ const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
                     </div>
 
                     {/* SHORTCUT SETTING */}
-                    <Shortcuts setShortcutSettingVisibility={setShortcutSettingVisibility} shortcutSettingVisibility={shortcutSettingVisibility} />
+                    <Shortcuts shortcutSettingToggle={shortcutSettingToggle} handleShortcutSetting={handleShortcutSetting}
+                    />
 
 
                     {/* THEME SETTINGS */}

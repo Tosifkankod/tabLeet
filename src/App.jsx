@@ -6,28 +6,21 @@ import { useState } from "react";
 import AiTools from "./components/AiTools";
 import { localStorageHelper } from "./utils/localStorageHelper";
 import { keys } from "./constants/localStoragekeys";
+import { useSettings } from "./context/SettingContext";
+import { useShortcuts } from "./context/ShortItemContext";
 
 function App() {
+  const { state, toggle } = useSettings();
   const [isOpen, setIsOpen] = useState(true);
   const [userName, setUserName] = useState(localStorageHelper.get(keys.username));
-  const [ltAiTools, setLtAiTools] = useState(() => {
-    return localStorageHelper.get(keys.ltAiToolsVisible) || false
-  });
-  const [shortcutVisibility, setShortcutVisibility] = useState(() => {
-    return localStorageHelper.get(keys.ltshortcutVisible);
+  const [shortcutItems, setShortcutItems] = useState(() => {
+    return localStorageHelper.get(keys.ltShortcutItems) || []
   })
+  const { shortcutsList } = useShortcuts();
 
   const handlePropSetUsername = (user_name) => {
-    // for dev
     localStorage.setItem(keys.username, user_name)
   }
-
-  const handleAiToolVisible = (val) => {
-    setLtAiTools(val);
-    localStorageHelper.set(keys.ltAiToolsVisible, val)
-  }
-
-  console.log("shortcutVisibility", shortcutVisibility);
 
   return (
     userName != null ? (
@@ -129,18 +122,18 @@ function App() {
 
         {/* SHORTCUTS */}
         {
-          shortcutVisibility && <div className="flex gap-8 fixed bottom-[10%] sm:bottom-[3%]">
-            <div className="bg-[var(--color-surface)] p-3 rounded-full cursor-pointer">
-              <img src="assets/icons/youtube.png" className="size-6" />
-            </div>
-            <div className="bg-[var(--color-surface)] p-3 rounded-full cursor-pointer">
-              <img src="assets/icons/chat-gpt.png" className="size-6" />
-            </div>
-            <div className="bg-[var(--color-surface)] p-3 rounded-full cursor-pointer">
-              <img src="assets/icons/gmail.png" className="size-6" />
-            </div>
-          </div>
+          state.ltShortcutsToggle && <div className="flex gap-8 fixed bottom-[10%] sm:bottom-[3%]">
+            {
+              shortcutsList.length > 0 && (
+                shortcutsList.map((item, index) => {
+                  return <a href={item.url} target="_blank" className="bg-[var(--color-surface)] border-2 border-transparent hover:border-2 hover:border-black duration-600 p-3 rounded-full cursor-pointer">
+                    <img src={item.icon} className="size-6" />
+                  </a>
 
+                })
+              )
+            }
+          </div>
         }
 
         {/* SIDE-BAR-TOGGLE */}
@@ -152,15 +145,15 @@ function App() {
 
         <div className="flex absolute top-4 left-4 gap-4 ">
           {
-            ltAiTools && <AiTools heading={'Ai Tools'} subHeading={"showAiTools"} />
+            state.ltAiToolsToggle && <AiTools />
           }
           <div className="p-2 bg-[var(--color-surface)] rounded-xl h-[35px] cursor-pointer text-sm px-4 ">
             Courses
           </div>
         </div>
 
-        <SideBar isOpen={isOpen} ltAiTools={ltAiTools} handleAiToolVisible={handleAiToolVisible} setIsOpen={setIsOpen} />
-      </main>
+        <SideBar isOpen={isOpen} setIsOpen={setIsOpen} />
+      </main >
     ) : (
       <FirstPage handlePropSetUsername={handlePropSetUsername} userName={userName} />
     )

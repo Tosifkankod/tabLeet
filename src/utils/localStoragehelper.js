@@ -16,7 +16,6 @@ export const localStorageHelper = {
     get(key, defaultValue = null) {
         try {
             const item = localStorage.getItem(key);
-            console.log(item);
             if (item === null || item === undefined) return defaultValue;
 
             try {

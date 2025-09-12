@@ -2,71 +2,23 @@ import { useEffect, useState } from "react";
 import { shortcuts as defaultShortuts } from "../constants/Shortcuts";
 import { localStorageHelper } from "../utils/localStorageHelper";
 import { keys } from "../constants/localStoragekeys";
+import { useSettings } from "../context/SettingContext";
+import { useShortcuts } from "../context/ShortItemContext";
 
 
-const Shortcuts = ({ shortcutSettingVisibility, setShortcutSettingVisibility }) => {
-    const [shortcutsList, setShortcutsList] = useState(defaultShortuts);
 
-    useEffect(() => {
-        const stored = localStorageHelper.get(keys.ltshortcutItems);
-        if (stored) {
-            setShortcutsList(stored);
-        } else {
-            setShortcutsList(defaultShortuts);
-            localStorageHelper.set(keys.ltshortcutItems, defaultShortuts);
-        }
-    }, [])
-
-    useEffect(() => {
-        if (shortcutsList.length > 0) {
-            localStorage.setItem(keys.ltshortcutItems, JSON.stringify(shortcutsList));
-        }
-    }, [shortcutsList]);
-
-    const handleAdd = () => {
-        setShortcutsList([...shortcutsList, { name: '', url: '', icon: '' }]);
-    }
-
-    const handleReset = () => {
-        setShortcutsList(defaultShortuts);
-    }
-
-    const handleClose = () => {
-        setShortcutSettingVisibility(!shortcutSettingVisibility);
-    }
-
-    const handleNameChange = (index, value) => {
-        const newList = [...shortcutsList];
-        newList[index].name = value;
-        setShortcutsList(newList);
-    }
-
-    const handleDelete = (index) => {
-        const newList = shortcutsList.filter((_, i) => i !== index)
-        setShortcutsList(newList)
-    }
-
-    const handleUrlChange = (index, value) => {
-        const newList = [...shortcutsList];
-        newList[index].url = value;
-        if (value) {
-            try {
-                const urlObj = new URL(value);
-                const domain = urlObj.hostname;
-                const iconUrl = `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
-                newList[index].icon = iconUrl;
-            } catch (error) {
-                newList[index].icon = '';
-                console.log(error);
-            }
-        } else {
-            newList[index].icon = '';
-        }
-        setShortcutsList(newList);
-    }
+const Shortcuts = ({ shortcutSettingToggle, handleShortcutSetting }) => {
+    const {
+        shortcutsList,
+        handleAdd,
+        handleReset,
+        handleDelete,
+        handleNameChange,
+        handleUrlChange,
+    } = useShortcuts();
 
     return (
-        <div className={`transition-all w-full mb-8 duration-700 ease-in-out overflow-hidden bg-gray-100  rounded-xl  ${shortcutSettingVisibility ? "h-[3500px]" : "h-0"}`}>
+        <div className={`transition-all w-full mb-8 duration-700 ease-in-out overflow-hidden bg-gray-100  rounded-xl  ${shortcutSettingToggle ? "h-[3500px]" : "h-0"}`}>
             <div className="p-2 rounded-xl h-full">
                 <div className="flex h-[8%] items-center  border-green-300 justify-between ">
                     <div className="flex items-center ">
