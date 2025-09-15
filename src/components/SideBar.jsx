@@ -126,12 +126,13 @@ const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
                     </div> */}
 
                     {
-                        <div className={`rounded-md w-full h-60 max-h-[calc(100vh-8.6rem)] overflow-y-auto border-[0.5px] border-white/5 outline-[0.5px] outline-black/5 mt-0 p-4 ${isThemeOpen ? 'opacity-0' : 'opacity-100'} transition-all duration-300`}>
+                        <div className={`rounded-md w-full h-60 max-h-[calc(100vh-8.6rem)] overflow-y-auto border-[0.5px] border-white/5 outline-[0.5px] outline-black/5 mt-0 p-4 ${isThemeOpen ? 'opacity-100' : 'opacity-0'} transition-all duration-300`}>
                             <p className="text-xs mb-4 text-[var(--color-primary)]">Theme</p>
                             <ul className="w-full">
                                 <ThemeSwitcher />
                             </ul>
-                        </div>}
+                        </div>
+                    }
                 </div>
             </div>
         </div >

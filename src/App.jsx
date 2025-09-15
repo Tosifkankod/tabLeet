@@ -8,6 +8,7 @@ import { localStorageHelper } from "./utils/localStorageHelper.js";
 import { keys } from "./constants/localStoragekeys";
 import { useSettings } from "./context/SettingContext";
 import { useShortcuts } from "./context/ShortItemContext";
+import TimeLeft from "./components/TimeLeft.jsx";
 
 function App() {
   const { state, toggle } = useSettings();
@@ -92,29 +93,20 @@ function App() {
                     userData.matchedUser?.submitStats?.acSubmissionNum &&
                     userData.matchedUser?.submitStats?.acSubmissionNum.map((item, index) => {
                       return (
-                        <div className="bg-[var(--color-surface)] p-2 px-8 rounded-xl text-center">
+                        <div key={index} className="bg-[var(--color-surface)] p-2 px-8 rounded-xl text-center">
                           <p className={`text-[14px] font-sans `}>{item.difficulty}</p>
-                          <p className={`text-[14px] ${color(index)} font-semibold`} > {item.count}</p>
+                          <p className={`text-[14px] ${color(index)} font-semibold`} > {item.count} / 800</p>
                         </div>
                       )
                     })
                   }
                 </div>
 
-                <div className="bg-[var(--color-surface)] p-2 px-4 pb-5 rounded-xl text-center space-y-4">
-                  <p>Time Left</p>
+                <div className="bg-[var(--color-surface)] p-2 px-4  rounded-xl text-center space-y-3">
                   <div className="relative">
-                    <div className="bg-[#747474] rounded-2xl">
-                      <div className="bg-[#76c801] w-[50%] rounded-xl h-2"></div>
-                    </div>
-
-                    <span className="absolute top-0 left-0 -translate-y-full text-xs">
-                      0%
-                    </span>
-                    <span className="absolute top-0 right-0 -translate-y-full text-xs">
-                      100%
-                    </span>
+                    <TimeLeft />
                   </div>
+                  <p className="text-[14px]"><i>Finish strong, you're almost done!</i></p>
                 </div>
               </div>
             </div>
