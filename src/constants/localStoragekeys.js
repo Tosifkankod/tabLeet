@@ -4,5 +4,5 @@ export const keys = {
     ltShortcutItems: 'ltShortcutItems',
     ltAiToolsToggle: 'ltAiToolsToggle',
     ltShortcutsToggle: 'ltShortcutsToggle',
-    username: 'username'
+    ltUserdata: 'userData',
 }

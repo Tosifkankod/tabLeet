@@ -1,10 +1,30 @@
 import React, { useState } from 'react'
+import { localStorageHelper } from '../utils/localStoragehelper.js';
+import { keys } from '../constants/localStoragekeys.js';
 
-const FirstPage = ({ handlePropSetUsername }) => {
+const FirstPage = ({ handlePropSetUserdata }) => {
     const [userName, setUserName] = useState('');
 
     const handleSubmit = () => {
-        handlePropSetUsername(userName)
+        fetch(`http://localhost:3000/api/v1/leetcode/tableet/${userName}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(async (response) => {
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({}));
+                throw new Error(errorData.message || `Error ${response.status}`);
+            }
+
+            const data = await response.json().catch((err) => {
+                throw new Error(err.message);
+            });
+            localStorageHelper.set(keys.ltUserdata, data.data);
+            handlePropSetUserdata(data.data);
+        }).catch((err) => {
+            alert(err.message)
+        })
     }
 
     return (

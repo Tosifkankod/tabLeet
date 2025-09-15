@@ -4,42 +4,76 @@ import FirstPage from "./components/FirstPage";
 import SideBar from "./components/SideBar";
 import { useState } from "react";
 import AiTools from "./components/AiTools";
-import { localStorageHelper } from "./utils/localStorageHelper";
+import { localStorageHelper } from "./utils/localStorageHelper.js";
 import { keys } from "./constants/localStoragekeys";
 import { useSettings } from "./context/SettingContext";
 import { useShortcuts } from "./context/ShortItemContext";
 
 function App() {
   const { state, toggle } = useSettings();
-  const [isOpen, setIsOpen] = useState(true);
-  const [userName, setUserName] = useState(localStorageHelper.get(keys.username));
+  const [isOpen, setIsOpen] = useState(false);
+  const [userData, setUserData] = useState(() => {
+    let data = localStorageHelper.get(keys.ltUserdata);
+    return data ? data : null;
+  });
   const [shortcutItems, setShortcutItems] = useState(() => {
     return localStorageHelper.get(keys.ltShortcutItems) || []
   })
   const { shortcutsList } = useShortcuts();
 
-  const handlePropSetUsername = (user_name) => {
-    localStorage.setItem(keys.username, user_name)
+  const handlePropSetUserdata = (user_data) => {
+    localStorageHelper.set(keys.ltUserdata, user_data)
+    setUserData(user_data)
+  }
+
+  const color = (index) => {
+    if (index == 0) {
+      return `text-black`
+    } else if (index == 1) {
+      return `text-green-800`
+    } else if (index == 2) {
+      return `text-orange-800`
+    } else {
+      return `text-red-800`
+    }
   }
 
   return (
-    userName != null ? (
+    userData != null ? (
       <main className="min-h-screen flex flex-col items-center justify-center gap-20 px-10 bg-[var(--color-background)]">
         <section className="flex flex-col xl:flex-row gap-5 xl:gap-10">
           <div className="flex flex-col sm:flex-row md:flex-col justify-between gap-2">
             <LiveClock />
             <div>
-              <div className="flex items-center gap-3 border border-[var(--color-muted)] rounded-xl p-1 sm:pr-10 md:pr-16 sm:w-fit">
+              <div className="flex bg-[var(--color-surface)]  items-center gap-3 border border-[var(--color-muted)] rounded-xl p-1 sm:pr-10 md:pr-16 sm:w-fit">
                 <img
-                  src="/assets/images/dummy-profile.jpg"
+                  src={userData?.matchedUser?.profile?.userAvatar}
                   className="rounded-xl size-[100px]"
                 />
                 <div className="text-sm flex flex-col gap-2 text-[var(--color-primary)]">
-                  <p>tosifkandkod</p>
-                  <p>Rank: 737,485</p>
-                  <button className="bg-[var(--color-primary)] rounded-sm text-white py-1 px-6 cursor-pointer text-xs">
-                    Visit Profile
-                  </button>
+                  <p>{userData?.matchedUser?.username}</p>
+                  <p>Rank: {userData?.matchedUser?.profile?.ranking}</p>
+                  <div className="flex gap-2">
+                    <button className="bg-[var(--color-primary)] rounded-sm text-white py-1 px-6 cursor-pointer text-xs">
+                      Visit Profile
+                    </button>
+                    <div className="bg-[var(--color-primary)] cursor-pointer flex items-center justify-center p-1 rounded-sm">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 18 18"
+                        width="1em"
+                        height="1em"
+                        fill="currentColor"
+                        className="h-[20px] w-[20px] text-white  hover:text-text-primary dark:hover:text-text-primary text-text-secondary dark:text-text-secondary"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M7.19 1.564a.75.75 0 01.729.069c2.137 1.475 3.373 3.558 3.981 5.002l.641-.663a.75.75 0 011.17.115c1.633 2.536 1.659 5.537.391 7.725-1.322 2.282-3.915 2.688-5.119 2.688-1.177 0-3.679-.203-5.12-2.688-.623-1.076-.951-2.29-.842-3.528.109-1.245.656-2.463 1.697-3.54.646-.67 1.129-1.592 1.468-2.492.337-.895.51-1.709.564-2.105a.75.75 0 01.44-.583zm.784 2.023c-.1.368-.226.773-.385 1.193-.375.997-.947 2.13-1.792 3.005-.821.851-1.205 1.754-1.282 2.63-.078.884.153 1.792.647 2.645C6.176 14.81 7.925 15 8.983 15c1.03 0 2.909-.366 3.822-1.94.839-1.449.97-3.446.11-5.315l-.785.812a.75.75 0 01-1.268-.345c-.192-.794-1.04-2.948-2.888-4.625z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -54,25 +88,17 @@ function App() {
 
               <div className="hidden sm:block space-y-2 text-[var(--color-primary)]">
                 <div className="grid grid-cols-2 gap-2 ">
-                  <div className="bg-[var(--color-surface)] p-2 px-8 rounded-xl text-center">
-                    <strong className="text-[#8da96c]">Easy</strong>
-                    <p>106/892</p>
-                  </div>
-                  <div className="bg-[var(--color-surface)] p-2 px-8 rounded-xl text-center">
-                    <strong className="text-[#fca36f]">Med</strong>
-                    <p>106/892</p>
-                  </div>
-                  <div className="bg-[var(--color-surface)] p-2 px-8 rounded-xl text-center">
-                    <strong className="text-[#e66962]">Hard</strong>
-                    <p>106/892</p>
-                  </div>
-                  <div className="bg-[var(--color-surface)] p-2 px-8 rounded-xl text-center">
-                    <img
-                      src="assets/icons/fire.png"
-                      className="size-[25px] mx-auto"
-                    />
-                    <strong className="text-xs">Daily Ques.</strong>
-                  </div>
+                  {
+                    userData.matchedUser?.submitStats?.acSubmissionNum &&
+                    userData.matchedUser?.submitStats?.acSubmissionNum.map((item, index) => {
+                      return (
+                        <div className="bg-[var(--color-surface)] p-2 px-8 rounded-xl text-center">
+                          <p className={`text-[14px] font-sans `}>{item.difficulty}</p>
+                          <p className={`text-[14px] ${color(index)} font-semibold`} > {item.count}</p>
+                        </div>
+                      )
+                    })
+                  }
                 </div>
 
                 <div className="bg-[var(--color-surface)] p-2 px-4 pb-5 rounded-xl text-center space-y-4">
@@ -138,9 +164,7 @@ function App() {
 
         {/* SIDE-BAR-TOGGLE */}
         <div onClick={() => setIsOpen(true)} className="size-12 rounded-full bg-[#727272] grid place-items-center cursor-pointer fixed bottom-[3%] right-[3%]">
-          <div className="size-9 rounded-full grid place-items-center bg-[#020202]">
-            <div className="size-5 rounded-full bg-white"></div>
-          </div>
+          <img src="/assets/icons/tab-leet-icon.svg" alt="" />
         </div>
 
         <div className="flex absolute top-4 left-4 gap-4 ">
@@ -155,7 +179,7 @@ function App() {
         <SideBar isOpen={isOpen} setIsOpen={setIsOpen} />
       </main >
     ) : (
-      <FirstPage handlePropSetUsername={handlePropSetUsername} userName={userName} />
+      <FirstPage handlePropSetUserdata={handlePropSetUserdata} />
     )
   )
 }
