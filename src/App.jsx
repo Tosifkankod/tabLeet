@@ -52,12 +52,12 @@ function App() {
                   className="rounded-xl size-[100px]"
                 />
                 <div className="text-sm flex flex-col gap-2 text-[var(--color-primary)]">
-                  <p>{userData?.matchedUser?.username}</p>
+                  <p className="text-lg">{userData?.matchedUser?.username}</p>
                   <p>Rank: {userData?.matchedUser?.profile?.ranking}</p>
                   <div className="flex gap-2">
-                    <button className="bg-[var(--color-primary)] rounded-sm text-white py-1 px-6 cursor-pointer text-xs">
+                    <a target="_blank" href={`https://leetcode.com/u/${userData?.matchedUser?.username}/`} className="bg-[var(--color-primary)] flex items-center rounded-sm text-white py-1 px-6 cursor-pointer text-xs">
                       Visit Profile
-                    </button>
+                    </a>
                     <div className="bg-[var(--color-primary)] cursor-pointer flex items-center justify-center p-1 rounded-sm">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
