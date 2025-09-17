@@ -9,6 +9,7 @@ import { keys } from "./constants/localStoragekeys";
 import { useSettings } from "./context/SettingContext";
 import { useShortcuts } from "./context/ShortItemContext";
 import TimeLeft from "./components/TimeLeft.jsx";
+import Temp from "./components/Temp.jsx";
 
 function App() {
   const { state, toggle } = useSettings();
@@ -85,8 +86,8 @@ function App() {
               did"
             </p>
             <div className="flex flex-col md:flex-row gap-2">
-              <Heatmap />
-
+              {/* <Heatmap /> */}
+              <Temp />
               <div className="hidden sm:block space-y-2 text-[var(--color-primary)]">
                 <div className="grid grid-cols-2 gap-2 ">
                   {
