@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { localStorageHelper } from '../utils/localStoragehelper.js';
+import { localStorageHelper } from '../utils/localStorageHelper.js';
 import { keys } from '../constants/localStoragekeys.js';
 
 const FirstPage = ({ handlePropSetUserdata }) => {

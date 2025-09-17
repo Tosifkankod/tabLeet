@@ -18,9 +18,6 @@ function App() {
     let data = localStorageHelper.get(keys.ltUserdata);
     return data ? data : null;
   });
-  const [shortcutItems, setShortcutItems] = useState(() => {
-    return localStorageHelper.get(keys.ltShortcutItems) || []
-  })
   const { shortcutsList } = useShortcuts();
 
   const handlePropSetUserdata = (user_data) => {
