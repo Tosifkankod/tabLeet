@@ -5,4 +5,5 @@ export const keys = {
     ltAiToolsToggle: 'ltAiToolsToggle',
     ltShortcutsToggle: 'ltShortcutsToggle',
     ltUserdata: 'userData',
+    ltQuote: 'ltQuote'
 }

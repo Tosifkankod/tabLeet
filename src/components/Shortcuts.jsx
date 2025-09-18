@@ -1,8 +1,3 @@
-import { useEffect, useState } from "react";
-import { shortcuts as defaultShortuts } from "../constants/Shortcuts";
-import { localStorageHelper } from "../utils/localStorageHelper";
-import { keys } from "../constants/localStoragekeys";
-import { useSettings } from "../context/SettingContext";
 import { useShortcuts } from "../context/ShortItemContext";
 
 
@@ -16,6 +11,10 @@ const Shortcuts = ({ shortcutSettingToggle, handleShortcutSetting }) => {
         handleNameChange,
         handleUrlChange,
     } = useShortcuts();
+
+    const handleClose = () => {
+        handleShortcutSetting()
+    }
 
     return (
         <div className={`transition-all w-full  border-0 duration-700 ease-in-out overflow-hidden bg-gray-100 rounded-xl  ${shortcutSettingToggle ? "h-[3500px] mb-2 " : "h-0 "}`}>
