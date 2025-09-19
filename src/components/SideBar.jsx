@@ -87,10 +87,10 @@ const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
                                 <label className="relative inline-flex items-center cursor-pointer">
                                     <input type="checkbox" value={state.ltShortcutsToggle} checked={state.ltShortcutsToggle} name={keys.ltShortcutsToggle} onChange={handleShortcutToggle} className="sr-only peer" />
                                     <div className="w-14 h-8 bg-gray-300 rounded-full peer peer-checked:bg-[#FFA150] peer-focus:ring-2 peer-focus:ring-[#FFA150] after:content-[''] after:absolute after:top-1 after:left-1 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:after:translate-x-6"></div>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+                                </label >
+                            </div >
+                        </div >
+                    </div >
 
                     <div className="nav p-2 bg-[var(--color-surface)] text-[var(--color-primary)] rounded-lg">
                         <div className="flex w-full">
@@ -140,8 +140,8 @@ const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
                             </ul>
                         </div>
                     }
-                </div>
-            </div>
+                </div >
+            </div >
         </div >
     );
 }
