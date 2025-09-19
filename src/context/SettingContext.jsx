@@ -1,9 +1,11 @@
 import { createContext, useContext, useMemo, useReducer } from "react";
+import { keys } from "../constants/localStoragekeys";
 
 // Initialize state from localStorage if available
 const initialState = {
-    ltAiToolsToggle: JSON.parse(localStorage.getItem('ltAiToolsToggle')) ?? false,
-    ltShortcutsToggle: JSON.parse(localStorage.getItem('ltShortcutsToggle')) ?? false,
+    ltAiToolsToggle: JSON.parse(localStorage.getItem(keys.ltAiToolsToggle)) ?? false,
+    ltShortcutsToggle: JSON.parse(localStorage.getItem(keys.ltShortcutsToggle)) ?? false,
+    ltNotesToggle: JSON.parse(localStorage.getItem(keys.ltNotesToggle)) ?? false,
 };
 
 const settingReducer = (state, action) => {

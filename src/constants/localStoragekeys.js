@@ -4,6 +4,7 @@ export const keys = {
     ltShortcutItems: 'ltShortcutItems',
     ltAiToolsToggle: 'ltAiToolsToggle',
     ltShortcutsToggle: 'ltShortcutsToggle',
+    ltNotesToggle: 'ltNotesToggle',
     ltUserdata: 'userData',
     ltQuote: 'ltQuote'
 }

@@ -127,7 +127,7 @@ function App() {
           </div>
           <div className="">
             <p className="text-[var(--color-secondary)] text-sm md:text-base font-medium pb-1 text-ellipsis line-clamp-1">
-              <q>{quote.quote}</q>
+              {/* <q></q> */}
             </p>
             <div className="flex flex-col md:flex-row gap-2">
               {/* <Heatmap /> */}
@@ -183,8 +183,10 @@ function App() {
                 </button>
               </div>
             </form>
+            <h1 className="text-lg italic mt-2 text-center rounded-4xl ">“{quote.quote}”</h1>
           </div>
         </section>
+
 
         {/* SHORTCUTS */}
         {
@@ -207,12 +209,12 @@ function App() {
           <img src="/assets/icons/tab-leet-icon.svg" alt="" />
         </div>
 
-        <div className="flex absolute top-4 left-4 gap-4 ">
+        <div className="flex absolute top-4 left-4 gap-3 ">
           {
             state.ltAiToolsToggle && <AiTools />
           }
-          <div className="p-2 bg-[var(--color-surface)] rounded-xl h-[35px] cursor-pointer text-sm px-4 ">
-            Courses
+          <div className="p-2 bg-[var(--color-surface)] text-center flex items-center justify-center rounded-xl h-[35px] cursor-pointer text-sm px-2 ">
+            <svg fill="#000000" width="22px" height="22px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"><path d="M16,14H8a1,1,0,0,0,0,2h8a1,1,0,0,0,0-2Zm0-4H10a1,1,0,0,0,0,2h6a1,1,0,0,0,0-2Zm4-6H17V3a1,1,0,0,0-2,0V4H13V3a1,1,0,0,0-2,0V4H9V3A1,1,0,0,0,7,3V4H4A1,1,0,0,0,3,5V19a3,3,0,0,0,3,3H18a3,3,0,0,0,3-3V5A1,1,0,0,0,20,4ZM19,19a1,1,0,0,1-1,1H6a1,1,0,0,1-1-1V6H7V7A1,1,0,0,0,9,7V6h2V7a1,1,0,0,0,2,0V6h2V7a1,1,0,0,0,2,0V6h2Z" /></svg>
           </div>
         </div>
 
