@@ -107,7 +107,7 @@ function App() {
               </button>
               <input
                 type="text"
-                className="w-full rounded-xl outline-0 px-2 placeholder:text-[var(--color-primary)]"
+                className="w-full rounded-xl outline-0 px-2 placeholder:text-[var(--color-primary)] text-[var(--color-primary)]"
                 placeholder="Type here..."
               />
               <button className="bg-[var(--color-button)] rounded-full min-w-10 h-10 flex items-center justify-center cursor-pointer">
@@ -155,7 +155,7 @@ function App() {
           {
             ltAiTools && <AiTools heading={'Ai Tools'} subHeading={"showAiTools"} />
           }
-          <div className="p-2 bg-[var(--color-surface)] rounded-xl h-[35px] cursor-pointer text-sm px-4 ">
+          <div className="p-2 bg-[var(--color-surface)] rounded-xl h-[35px] cursor-pointer text-sm px-4 text-[var(--color-primary)]">
             Courses
           </div>
         </div>

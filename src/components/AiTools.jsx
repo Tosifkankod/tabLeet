@@ -36,7 +36,7 @@ const AiTools = () => {
     return (
         <div>
             {/* Ai Tools */}
-            <div className="con bg-[var(--color-surface)] rounded-xl overflow-hidden ">
+            <div className="con bg-[var(--color-surface)] rounded-xl overflow-hidden text-[var(--color-primary)]">
                 <p className="text-center mb-4 text-sm py-2">AI Tools</p>
                 <div className="grid grid-cols-4 gr grid-rows-3 gap-2 p-2 transition-all w-full ">
                     {

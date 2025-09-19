@@ -56,7 +56,7 @@ const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
                             <div className="w-[20%] flex items-center justify-center">
                                 <label className="relative inline-flex items-center cursor-pointer">
                                     <input type="checkbox" checked={ltAiTools} name="ltAiTools" onChange={handleLtAiTools} className="sr-only peer" />
-                                    <div className="w-14 h-8 bg-gray-300 rounded-full peer peer-checked:bg-[#FFA150] peer-focus:ring-2 peer-focus:ring-[#FFA150] after:content-[''] after:absolute after:top-1 after:left-1 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:after:translate-x-6"></div>
+                                    <div className="w-14 h-8 bg-gray-300 rounded-full peer peer-checked:bg-[var(--color-primary)] peer-focus:ring-2 peer-focus:ring-[var(--color-primary)]after:content-[''] after:absolute after:top-1 after:left-1 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:after:translate-x-6"></div>
                                 </label>
                             </div>
                         </div>
@@ -79,7 +79,7 @@ const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
                             <div className="w-[20%] flex items-center justify-center">
                                 <label className="relative inline-flex items-center cursor-pointer">
                                     <input type="checkbox" value={shortcutVisibility} checked={shortcutVisibility} name={keys.ltshortcutVisible} onChange={handleLtShortcut} className="sr-only peer" />
-                                    <div className="w-14 h-8 bg-gray-300 rounded-full peer peer-checked:bg-[#FFA150] peer-focus:ring-2 peer-focus:ring-[#FFA150] after:content-[''] after:absolute after:top-1 after:left-1 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:after:translate-x-6"></div>
+                                    <div className="w-14 h-8 bg-gray-300 rounded-full peer peer-checked:bg-[var(--color-primary)] peer-focus:ring-2 peer-focus:ring-[var(--color-primary)] after:content-[''] after:absolute after:top-1 after:left-1 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:after:translate-x-6"></div>
                                 </label>
                             </div>
                         </div>
