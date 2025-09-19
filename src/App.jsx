@@ -4,12 +4,13 @@ import FirstPage from "./components/FirstPage";
 import SideBar from "./components/SideBar";
 import { useEffect, useState } from "react";
 import AiTools from "./components/AiTools";
-import { localStorageHelper } from "./utils/localStorageHelper.js";
+import { localStorageHelper } from "./utils/localStoragehelper.js";
 import { keys } from "./constants/localStoragekeys";
 import { useSettings } from "./context/SettingContext";
 import { useShortcuts } from "./context/ShortItemContext";
 import TimeLeft from "./components/TimeLeft.jsx";
 import Temp from "./components/Temp.jsx";
+import Notes from "./components/Notes.jsx";
 
 function App() {
   const [quote, setQuote] = useState(() => {
@@ -217,6 +218,8 @@ function App() {
             <svg fill="#000000" width="22px" height="22px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"><path d="M16,14H8a1,1,0,0,0,0,2h8a1,1,0,0,0,0-2Zm0-4H10a1,1,0,0,0,0,2h6a1,1,0,0,0,0-2Zm4-6H17V3a1,1,0,0,0-2,0V4H13V3a1,1,0,0,0-2,0V4H9V3A1,1,0,0,0,7,3V4H4A1,1,0,0,0,3,5V19a3,3,0,0,0,3,3H18a3,3,0,0,0,3-3V5A1,1,0,0,0,20,4ZM19,19a1,1,0,0,1-1,1H6a1,1,0,0,1-1-1V6H7V7A1,1,0,0,0,9,7V6h2V7a1,1,0,0,0,2,0V6h2V7a1,1,0,0,0,2,0V6h2Z" /></svg>
           </div>
         </div>
+
+        <Notes />
 
         <SideBar isOpen={isOpen} setIsOpen={setIsOpen} />
       </main >

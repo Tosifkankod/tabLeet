@@ -28,9 +28,6 @@ const FirstPage = ({ handlePropSetUserdata }) => {
     }
 
     return (
-        // <div className='w-full flex items-center h-screen bg-gray-900 text-white bg-[url(https://cdn.pixabay.com/photo/2022/05/11/09/12/information-7188889_1280.jpg)] bg-center '>
-        // <div className='w-full flex items-center h-screen bg-gray-900 text-white bg-[url(https://cdn.pixabay.com/photo/2014/05/27/23/32/matrix-356024_1280.jpg)] '>
-        // <div className='w-full flex items-center h-screen bg-gray-900 text-white bg-[url(https://images.pexels.com/photos/1933900/pexels-photo-1933900.jpeg)] '>
         <div className='w-full h-screen bg-gray-900 text-white bg-[url(https://cdn.pixabay.com/photo/2024/09/19/17/34/ai-generated-9059343_1280.png)] bg-cover bg-center '>
             <div className='relative z-3 mx-auto text-centers w-1/2 py-6 '>
                 <img src="/assets/icons/tab-leet-icon.svg" width='60px' className='mx-auto ' />
