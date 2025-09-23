@@ -1,10 +1,9 @@
 import LiveClock from "./components/LiveClock";
-import Heatmap from "./components/Heatmap";
 import FirstPage from "./components/FirstPage";
 import SideBar from "./components/SideBar";
 import { useEffect, useState } from "react";
 import AiTools from "./components/AiTools";
-import { localStorageHelper } from "./utils/localStoragehelper.js";
+import { localStorageHelper } from "./utils/localStorageHelper.js";
 import { keys } from "./constants/localStoragekeys";
 import { useSettings } from "./context/SettingContext";
 import { useShortcuts } from "./context/ShortItemContext";
@@ -17,12 +16,13 @@ function App() {
     const quote = localStorageHelper.get(keys.ltQuote);
     return quote ? quote : null;
   })
-  const { state, toggle } = useSettings();
+  const { state } = useSettings();
   const [isOpen, setIsOpen] = useState(false);
   const [userData, setUserData] = useState(() => {
     let data = localStorageHelper.get(keys.ltUserdata);
     return data ? data : null;
   });
+  const [notesVisibility, setNotesVisibility] = useState(false);
   const { shortcutsList } = useShortcuts();
 
   useEffect(() => {
@@ -84,6 +84,10 @@ function App() {
       alert(err.message)
     })
 
+  }
+
+  const handleNotesVisible = () => {
+    setNotesVisibility(!notesVisibility)
   }
 
   return (
@@ -195,7 +199,7 @@ function App() {
             {
               shortcutsList.length > 0 && (
                 shortcutsList.map((item, index) => {
-                  return <a href={item.url} target="_blank" className="bg-[var(--color-surface)] border-2 border-transparent hover:border-2 hover:border-black duration-600 p-3 rounded-full cursor-pointer">
+                  return <a href={item.url} key={index} target="_blank" className="bg-[var(--color-surface)] border-2 border-transparent hover:border-2 hover:border-black duration-600 p-3 rounded-full cursor-pointer">
                     <img src={item.icon} className="size-6" />
                   </a>
 
@@ -214,12 +218,15 @@ function App() {
           {
             state.ltAiToolsToggle && <AiTools />
           }
-          <div className="p-2 bg-[var(--color-surface)] text-center flex items-center justify-center rounded-xl h-[35px] cursor-pointer text-sm px-2 ">
-            <svg fill="#000000" width="22px" height="22px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"><path d="M16,14H8a1,1,0,0,0,0,2h8a1,1,0,0,0,0-2Zm0-4H10a1,1,0,0,0,0,2h6a1,1,0,0,0,0-2Zm4-6H17V3a1,1,0,0,0-2,0V4H13V3a1,1,0,0,0-2,0V4H9V3A1,1,0,0,0,7,3V4H4A1,1,0,0,0,3,5V19a3,3,0,0,0,3,3H18a3,3,0,0,0,3-3V5A1,1,0,0,0,20,4ZM19,19a1,1,0,0,1-1,1H6a1,1,0,0,1-1-1V6H7V7A1,1,0,0,0,9,7V6h2V7a1,1,0,0,0,2,0V6h2V7a1,1,0,0,0,2,0V6h2Z" /></svg>
-          </div>
+          {
+            state.ltNotesToggle && <div className="p-2 relative bg-[var(--color-surface)] text-center flex items-center justify-center rounded-xl h-[35px] cursor-pointer text-sm px-2 ">
+              <svg onClick={handleNotesVisible} fill="#000000" width="22px" height="22px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"><path d="M16,14H8a1,1,0,0,0,0,2h8a1,1,0,0,0,0-2Zm0-4H10a1,1,0,0,0,0,2h6a1,1,0,0,0,0-2Zm4-6H17V3a1,1,0,0,0-2,0V4H13V3a1,1,0,0,0-2,0V4H9V3A1,1,0,0,0,7,3V4H4A1,1,0,0,0,3,5V19a3,3,0,0,0,3,3H18a3,3,0,0,0,3-3V5A1,1,0,0,0,20,4ZM19,19a1,1,0,0,1-1,1H6a1,1,0,0,1-1-1V6H7V7A1,1,0,0,0,9,7V6h2V7a1,1,0,0,0,2,0V6h2V7a1,1,0,0,0,2,0V6h2Z" /></svg>
+
+              {notesVisibility && <Notes handleNotesVisible={handleNotesVisible} />}
+            </div>
+          }
         </div>
 
-        <Notes />
 
         <SideBar isOpen={isOpen} setIsOpen={setIsOpen} />
       </main >

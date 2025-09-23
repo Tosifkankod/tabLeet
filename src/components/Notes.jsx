@@ -1,50 +1,50 @@
-import React, { useState, useCallback, useRef, useEffect } from "react";
-import { localStorageHelper } from "../utils/localStorageHelper.js";
-import { keys } from "../constants/localStoragekeys.js";
+import React, { useState, useCallback, useRef } from "react";
+import { localStorageHelper } from '../utils/localStorageHelper.js'
+import { keys } from '../constants/localStoragekeys.js'
 
-const Notes = () => {
-    const [content, setContent] = useState("Order created.");
+const Notes = ({ handleNotesVisible }) => {
+    const [content, setContent] = useState(() => {
+        const notesData = localStorageHelper.get(keys.ltNotesData);
+        return notesData;
+    });
     const editorRef = useRef(null);
 
-    // Load saved notes on mount
-    useEffect(() => {
-        const savedNotes = localStorageHelper.get(keys.ltNotesData);
-        if (savedNotes) {
-            setContent(savedNotes);
-        }
+    const onContentBlur = useCallback((evt) => {
+        setContent(evt.currentTarget.innerHTML);
     }, []);
-
-    // Save notes on content change
-    const saveToLocalStorage = useCallback(
-        (value) => {
-            console.log("hello")
-            localStorageHelper.set(keys.ltNotesData, value);
-        },
-        []
-    );
-
-    const onContentBlur = useCallback(
-        (evt) => {
-            const newValue = evt.currentTarget.innerHTML;
-            setContent(newValue);
-            saveToLocalStorage(newValue);
-        },
-        [saveToLocalStorage]
-    );
 
     const handleFormat = (command) => {
         document.execCommand(command, false, null);
+        // Update state after formatting
         if (editorRef.current) {
-            const newValue = editorRef.current.innerHTML;
-            setContent(newValue);
-            saveToLocalStorage(newValue);
+            setContent(editorRef.current.innerHTML);
         }
     };
 
+    const handleOnSave = () => {
+        localStorageHelper.set(keys.ltNotesData, content);
+    }
+
+    const handleClose = () => {
+        handleNotesVisible()
+    }
+
+    const handleOnClear = () => {
+        localStorageHelper.set(keys.ltNotesData, "");
+        setContent("")
+    }
+
+
     return (
-        <div className="w-80 h-90 border border-gray-300 top-14 left-30 overflow-hidden justify-between bg-gray-300 rounded-xl absolute">
+        <div className="w-80 h-90 border text-left border-gray-300 top-10 left-0 overflow-hidden justify-between bg-gray-300 rounded-xl absolute">
             <div className="h-[10%] flex justify-between items-center p-2">
-                <h3>Notes</h3>
+                <div className="flex gap-2">
+                    <button onClick={() => handleClose()} className="cursor-pointer p-[0.5px] rounded-full">
+                        <img src="/assets/icons/cross.svg" width={"15px"} alt="" height={"15px"} />
+                    </button>
+                    <h3>Notes</h3>
+                </div>
+                <button onClick={handleOnSave} className="text-sm border-1 px-2 rounded-md" >Save</button>
                 <div className="flex gap-2">
                     {/* Bold Button */}
                     <button
@@ -89,9 +89,20 @@ const Notes = () => {
                             <path d="M19 4h-9M14 20H5M15 4l-6 16" />
                         </svg>
                     </button>
+                    <button
+                        onClick={handleOnClear}
+                        className="p-1 border rounded-md"
+                        title="Italic"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" aria-hidden="true" role="img">
+                            <title>Clear (C)</title>
+                            <path d="M17 6.5a7 7 0 1 0 0 11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
                 </div>
             </div>
 
+            {/* Editable Area */}
             <div
                 ref={editorRef}
                 onBlur={onContentBlur}
