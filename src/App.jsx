@@ -10,12 +10,14 @@ import { useShortcuts } from "./context/ShortItemContext";
 import TimeLeft from "./components/TimeLeft.jsx";
 import Temp from "./components/Temp.jsx";
 import Notes from "./components/Notes.jsx";
+import GoogleApps from "./components/GoogleApps.jsx";
 
 function App() {
   const [quote, setQuote] = useState(() => {
     const quote = localStorageHelper.get(keys.ltQuote);
     return quote ? quote : null;
   })
+  const [googleApps, setGoogleApps] = useState(false);
   const { state } = useSettings();
   const [isOpen, setIsOpen] = useState(false);
   const [userData, setUserData] = useState(() => {
@@ -88,6 +90,10 @@ function App() {
 
   const handleNotesVisible = () => {
     setNotesVisibility(!notesVisibility)
+  }
+
+  const handleGoogleApps = () => {
+    setGoogleApps(!googleApps);
   }
 
   return (
@@ -223,6 +229,37 @@ function App() {
               <svg onClick={handleNotesVisible} fill="#000000" width="22px" height="22px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"><path d="M16,14H8a1,1,0,0,0,0,2h8a1,1,0,0,0,0-2Zm0-4H10a1,1,0,0,0,0,2h6a1,1,0,0,0,0-2Zm4-6H17V3a1,1,0,0,0-2,0V4H13V3a1,1,0,0,0-2,0V4H9V3A1,1,0,0,0,7,3V4H4A1,1,0,0,0,3,5V19a3,3,0,0,0,3,3H18a3,3,0,0,0,3-3V5A1,1,0,0,0,20,4ZM19,19a1,1,0,0,1-1,1H6a1,1,0,0,1-1-1V6H7V7A1,1,0,0,0,9,7V6h2V7a1,1,0,0,0,2,0V6h2V7a1,1,0,0,0,2,0V6h2Z" /></svg>
 
               {notesVisibility && <Notes handleNotesVisible={handleNotesVisible} />}
+            </div>
+          }
+        </div>
+
+        <div className="bg-[var(--color-surface)] rounded-xl absolute top-4 right-5 p-1">
+          <svg onClick={handleGoogleApps} className="dot-icon text-gray-400" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24">
+            <path d="M8 6a2 2 0 1 1-4 0 2 2 0 0 1 4 0m0 6a2 2 0 1 1-4 0 2 2 0 0 1 4 0m-2 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4m8-14a2 2 0 1 1-4 0 2 2 0 0 1 4 0m-2 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4m2 4a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4-10a2 2 0 1 0 0-4 2 2 0 0 0 0 4m2 4a2 2 0 1 1-4 0 2 2 0 0 1 4 0m-2 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4"></path>
+          </svg>
+          {
+            googleApps && <div className="w-80 h-93 absolute right-0 top-9 rounded-xl shadow-lg shadow-gray-400  bg-[var(--color-surface)] overflow-hidden">
+
+              <div
+                className="p-2 h-full overflow-y-auto grid grid-cols-3 gap-3 text-center transition-all duration-700
+                [&::-webkit-scrollbar]:w-1 
+                [&::-webkit-scrollbar-track]:bg-[#c6c6c6] 
+                [&::-webkit-scrollbar-track]:rounded-full 
+                [&::-webkit-scrollbar-thumb]:rounded-md
+                [&::-webkit-scrollbar-thumb]:bg-[#313131]"
+              >
+                {Array.from({ length: 24 }).map((_, i) => (
+                  <div
+
+                    key={i}
+
+                    className="border-4 border-gray-500 h-20 rounded-lg flex items-center justify-center"
+
+                  >
+                    Hello
+                  </div>
+                ))}
+              </div>
             </div>
           }
         </div>
