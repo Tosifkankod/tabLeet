@@ -6,6 +6,7 @@ const initialState = {
     ltAiToolsToggle: JSON.parse(localStorage.getItem(keys.ltAiToolsToggle)) ?? false,
     ltShortcutsToggle: JSON.parse(localStorage.getItem(keys.ltShortcutsToggle)) ?? false,
     ltNotesToggle: JSON.parse(localStorage.getItem(keys.ltNotesToggle)) ?? false,
+    ltGoogleAppsToggle: JSON.parse(localStorage.getItem(keys.ltGoogleAppsToggle)) ?? false
 };
 
 const settingReducer = (state, action) => {

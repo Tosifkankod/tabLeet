@@ -220,6 +220,7 @@ function App() {
           <img src="/assets/icons/tab-leet-icon.svg" alt="" />
         </div>
 
+        {/* AI Tools */}
         <div className="flex absolute top-4 left-4 gap-3 ">
           {
             state.ltAiToolsToggle && <AiTools />
@@ -233,36 +234,40 @@ function App() {
           }
         </div>
 
-        <div className="bg-[var(--color-surface)] rounded-xl absolute top-4 right-5 p-1">
-          <svg onClick={handleGoogleApps} className="dot-icon text-gray-400" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24">
-            <path d="M8 6a2 2 0 1 1-4 0 2 2 0 0 1 4 0m0 6a2 2 0 1 1-4 0 2 2 0 0 1 4 0m-2 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4m8-14a2 2 0 1 1-4 0 2 2 0 0 1 4 0m-2 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4m2 4a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4-10a2 2 0 1 0 0-4 2 2 0 0 0 0 4m2 4a2 2 0 1 1-4 0 2 2 0 0 1 4 0m-2 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4"></path>
-          </svg>
-          {
-            googleApps && <div className="w-80 h-93 absolute right-0 top-9 rounded-xl shadow-lg shadow-gray-400  bg-[var(--color-surface)] overflow-hidden">
+        {/* Google Apps */}
+        {
+          state.ltGoogleAppsToggle &&
+          <div className="bg-[var(--color-surface)] rounded-xl absolute top-4 right-5 p-1">
+            <svg onClick={handleGoogleApps} className="dot-icon text-gray-400" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24">
+              <path d="M8 6a2 2 0 1 1-4 0 2 2 0 0 1 4 0m0 6a2 2 0 1 1-4 0 2 2 0 0 1 4 0m-2 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4m8-14a2 2 0 1 1-4 0 2 2 0 0 1 4 0m-2 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4m2 4a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4-10a2 2 0 1 0 0-4 2 2 0 0 0 0 4m2 4a2 2 0 1 1-4 0 2 2 0 0 1 4 0m-2 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4"></path>
+            </svg>
+            {
+              googleApps && <div className="w-80 h-93 absolute right-0 top-9 rounded-xl shadow-lg shadow-gray-400  bg-[var(--color-surface)] overflow-hidden">
 
-              <div
-                className="p-2 h-full overflow-y-auto grid grid-cols-3 gap-3 text-center transition-all duration-700
+                <div
+                  className="p-2 h-full overflow-y-auto grid grid-cols-3 gap-3 text-center transition-all duration-700
                 [&::-webkit-scrollbar]:w-1 
                 [&::-webkit-scrollbar-track]:bg-[#c6c6c6] 
                 [&::-webkit-scrollbar-track]:rounded-full 
                 [&::-webkit-scrollbar-thumb]:rounded-md
                 [&::-webkit-scrollbar-thumb]:bg-[#313131]"
-              >
-                {Array.from({ length: 24 }).map((_, i) => (
-                  <div
+                >
+                  {Array.from({ length: 24 }).map((_, i) => (
+                    <div
 
-                    key={i}
+                      key={i}
 
-                    className="border-4 border-gray-500 h-20 rounded-lg flex items-center justify-center"
+                      className="border-4 border-gray-500 h-20 rounded-lg flex items-center justify-center"
 
-                  >
-                    Hello
-                  </div>
-                ))}
+                    >
+                      Hello
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          }
-        </div>
+            }
+          </div>
+        }
 
 
         <SideBar isOpen={isOpen} setIsOpen={setIsOpen} />
