@@ -7,13 +7,13 @@ import Shortcuts from "./Shortcuts";
 import { useSettings } from "../context/SettingContext";
 
 
-const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
+const SideBar = ({ isOpen, setIsOpen }) => {
     const [isThemeOpen, setThemeIsOpen] = useState(false);
     const { state, toggle } = useSettings();
     const [shortcutSettingToggle, setShortcutSettingToggle] = useState(false);
 
 
-    const handleLtAiToolsToggle = (e) => {
+    const handleLtAiToolsToggle = () => {
         const newValue = !state.ltAiToolsToggle;
         toggle(keys.ltAiToolsToggle);
 
@@ -24,11 +24,10 @@ const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
     }
 
     const handleShortcutToggle = () => {
-        const newValue = !state.ltShortcutsToggle;
         toggle(keys.ltShortcutsToggle);
     }
 
-    const handleLtNotesToggle = (e) => {
+    const handleLtNotesToggle = () => {
         toggle(keys.ltNotesToggle)
     }
 
@@ -153,7 +152,7 @@ const SideBar = ({ isOpen, setIsOpen, handleAiToolVisible, ltAiTools }) => {
                     </div>
 
                     {
-                        <div className={`rounded-md w-full h-60 max-h-[calc(100vh-8.6rem)] overflow-y-auto border-[0.5px] border-white/5 outline-[0.5px] outline-black/5 mt-0 p-4 ${isThemeOpen ? 'opacity-100' : 'opacity-0'} transition-all duration-300`}>
+                        <div className={`rounded-md w-full h-60 max-h-[calc(100vh-8.6rem)] overflow-y-auto border-[0.5px] border-white/5 outline-[0.5px] outline-black/5 mt-0 p-4 ${isThemeOpen ? 'block' : 'hidden'} transition-all duration-300`}>
                             <p className="text-xs mb-4 text-[var(--color-primary)]">Theme</p>
                             <ul className="w-full">
                                 <ThemeSwitcher />
