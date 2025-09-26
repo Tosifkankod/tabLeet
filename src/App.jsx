@@ -257,10 +257,11 @@ function App() {
 
                       key={i}
 
-                      className="border-4 border-gray-500 h-20 rounded-lg flex items-center justify-center"
+                      className="border-4 border-gray-500 h-20 rounded-lg flex flex-col items-center justify-center gap-1"
 
                     >
-                      Hello
+                      <img src="/assets/google/chat.svg" className="text-red-300" width={'26px'} alt="" />
+                      <p className="text-sm">Gmail</p>
                     </div>
                   ))}
                 </div>
