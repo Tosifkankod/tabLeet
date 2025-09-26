@@ -10,7 +10,7 @@ import { useShortcuts } from "./context/ShortItemContext";
 import TimeLeft from "./components/TimeLeft.jsx";
 import Temp from "./components/Temp.jsx";
 import Notes from "./components/Notes.jsx";
-import GoogleApps from "./components/GoogleApps.jsx";
+import { googleAppsConstant } from './constants/GoogleAppsConstant.jsx';
 
 function App() {
   const [quote, setQuote] = useState(() => {
@@ -237,12 +237,12 @@ function App() {
         {/* Google Apps */}
         {
           state.ltGoogleAppsToggle &&
-          <div className="bg-[var(--color-surface)] rounded-xl absolute top-4 right-5 p-1">
+          <div className="bg-[var(--color-surface)]  rounded-xl absolute top-4 right-5 p-1">
             <svg onClick={handleGoogleApps} className="dot-icon text-gray-400" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24">
               <path d="M8 6a2 2 0 1 1-4 0 2 2 0 0 1 4 0m0 6a2 2 0 1 1-4 0 2 2 0 0 1 4 0m-2 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4m8-14a2 2 0 1 1-4 0 2 2 0 0 1 4 0m-2 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4m2 4a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4-10a2 2 0 1 0 0-4 2 2 0 0 0 0 4m2 4a2 2 0 1 1-4 0 2 2 0 0 1 4 0m-2 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4"></path>
             </svg>
             {
-              googleApps && <div className="w-80 h-93 absolute right-0 top-9 rounded-xl shadow-lg shadow-gray-400  bg-[var(--color-surface)] overflow-hidden">
+              googleApps && <div className="w-80 h-93 absolute  right-0 top-9 rounded-xl shadow-lg shadow-gray-400  bg-white/70 backdrop-blur-lg overflow-hidden">
 
                 <div
                   className="p-2 h-full overflow-y-auto grid grid-cols-3 gap-3 text-center transition-all duration-700
@@ -252,18 +252,21 @@ function App() {
                 [&::-webkit-scrollbar-thumb]:rounded-md
                 [&::-webkit-scrollbar-thumb]:bg-[#313131]"
                 >
-                  {Array.from({ length: 24 }).map((_, i) => (
-                    <div
-
-                      key={i}
-
-                      className="border-4 border-gray-500 h-20 rounded-lg flex flex-col items-center justify-center gap-1"
-
-                    >
-                      <img src="/assets/google/chat.svg" className="text-red-300" width={'26px'} alt="" />
-                      <p className="text-sm">Gmail</p>
-                    </div>
-                  ))}
+                  {
+                    googleAppsConstant.map((item, i) => {
+                      return <a
+                        key={i}
+                        href={item.link}
+                        target="_blank"
+                        className=" p-2 border-gray-500 h-20 rounded-lg flex flex-col items-center justify-center gap-1"
+                      >
+                        <span className="overflow-hidden">
+                          {item.icon('text-red-300')}
+                        </span>
+                        <p className="text-xs w-full whitespace-nowrap overflow-ellipsis overflow-hidden">{item.name}</p>
+                      </a>
+                    })
+                  }
                 </div>
               </div>
             }
