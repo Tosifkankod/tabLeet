@@ -194,10 +194,9 @@ function App() {
                 </button>
               </div>
             </form>
-            <h1 className="text-lg italic mt-2 text-center rounded-4xl ">“{quote.quote}”</h1>
+            <h1 className="text-lg italic mt-2 text-center rounded-4xl text-[var(--color-primary)]">“{quote.quote}”</h1>
           </div>
         </section>
-
 
         {/* SHORTCUTS */}
         {
@@ -226,8 +225,18 @@ function App() {
             state.ltAiToolsToggle && <AiTools />
           }
           {
-            state.ltNotesToggle && <div className="p-2 relative bg-[var(--color-surface)] text-center flex items-center justify-center rounded-xl h-[35px] cursor-pointer text-sm px-2 ">
-              <svg onClick={handleNotesVisible} fill="#000000" width="22px" height="22px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"><path d="M16,14H8a1,1,0,0,0,0,2h8a1,1,0,0,0,0-2Zm0-4H10a1,1,0,0,0,0,2h6a1,1,0,0,0,0-2Zm4-6H17V3a1,1,0,0,0-2,0V4H13V3a1,1,0,0,0-2,0V4H9V3A1,1,0,0,0,7,3V4H4A1,1,0,0,0,3,5V19a3,3,0,0,0,3,3H18a3,3,0,0,0,3-3V5A1,1,0,0,0,20,4ZM19,19a1,1,0,0,1-1,1H6a1,1,0,0,1-1-1V6H7V7A1,1,0,0,0,9,7V6h2V7a1,1,0,0,0,2,0V6h2V7a1,1,0,0,0,2,0V6h2Z" /></svg>
+            state.ltNotesToggle && <div className="p-2  relative bg-[var(--color-surface)] text-center flex items-center justify-center rounded-xl h-[35px] cursor-pointer text-sm px-2 ">
+              <svg onClick={handleNotesVisible}
+                fill="#000000"
+                width="22px"
+                height="22px"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                data-name="Layer 1"
+                className=" text-[var(--color-primary)] fill-current"
+              >
+                <path d="M16,14H8a1,1,0,0,0,0,2h8a1,1,0,0,0,0-2Zm0-4H10a1,1,0,0,0,0,2h6a1,1,0,0,0,0-2Zm4-6H17V3a1,1,0,0,0-2,0V4H13V3a1,1,0,0,0-2,0V4H9V3A1,1,0,0,0,7,3V4H4A1,1,0,0,0,3,5V19a3,3,0,0,0,3,3H18a3,3,0,0,0,3-3V5A1,1,0,0,0,20,4ZM19,19a1,1,0,0,1-1,1H6a1,1,0,0,1-1-1V6H7V7A1,1,0,0,0,9,7V6h2V7a1,1,0,0,0,2,0V6h2V7a1,1,0,0,0,2,0V6h2Z" />
+              </svg>
 
               {notesVisibility && <Notes handleNotesVisible={handleNotesVisible} />}
             </div>
