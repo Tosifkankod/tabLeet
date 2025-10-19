@@ -7,7 +7,7 @@ import Shortcuts from "./Shortcuts";
 import { useSettings } from "../context/SettingContext";
 
 
-const SideBar = ({ isOpen, setIsOpen }) => {
+const SideBar = ({ isOpen, setIsOpen, setLogoutVisibility }) => {
     const [isThemeOpen, setThemeIsOpen] = useState(false);
     const { state, toggle } = useSettings();
     const [shortcutSettingToggle, setShortcutSettingToggle] = useState(false);
@@ -37,6 +37,13 @@ const SideBar = ({ isOpen, setIsOpen }) => {
 
     const handleGoogleAppsToggle = () => {
         toggle(keys.ltGoogleAppsToggle)
+    }
+
+    const onHandleLogout = () => {
+        setLogoutVisibility((prev) => {
+            return !prev;
+        })
+        setIsOpen(false)
     }
 
     return (
@@ -196,6 +203,12 @@ const SideBar = ({ isOpen, setIsOpen }) => {
                             </ul>
                         </div>
                     }
+
+                    <div className="nav rounded-lg text-center ">
+                        <button onClick={onHandleLogout} className="border-3 border-white outline-2 bg-[var(--color-surface)] text-xl p-2 cursor-pointer px-7 rounded-full  text-[var(--color-primary)]">
+                            Logout
+                        </button>
+                    </div>
                 </div >
             </div >
         </div >

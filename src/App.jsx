@@ -26,6 +26,7 @@ function App() {
   });
   const [notesVisibility, setNotesVisibility] = useState(false);
   const { shortcutsList } = useShortcuts();
+  const [logoutVisibility, setLogoutVisibility] = useState(false)
 
   useEffect(() => {
     const saved = localStorageHelper.get(keys.ltQuote);
@@ -94,6 +95,11 @@ function App() {
 
   const handleGoogleApps = () => {
     setGoogleApps(!googleApps);
+  }
+
+  // fn for logout the user
+  const handleLogoutUser = () => {
+
   }
 
   return (
@@ -282,8 +288,21 @@ function App() {
           </div>
         }
 
+        {
+          logoutVisibility &&
+          <div className="bg-black/10 w-full h-full top-0 left-0  absolute backdrop-blur-lg flex items-center justify-center">
+            <div className="bg-[var(--color-surface)] w-[40%]  p-8 shadow-lg shadow-gray-500 rounded-xl">
+              <h1 className="text-xl">Are you sure you want to Logout ?</h1>
+              <p>your data and settings will be removed</p>
+              <div className="flex gap-6 justify-center mt-10">
+                <button onClick={() => { setLogoutVisibility(false) }} className="p-2 px-8 text-white cursor-pointer bg-[var(--color-primary)] rounded-full" >Cancel</button>
+                <button onClick={handleLogoutUser} className="p-2 px-8 text-white cursor-pointer rounded-full bg-red-500 hover:bg-red-400" >Logout</button>
+              </div>
+            </div>
+          </div>
+        }
 
-        <SideBar isOpen={isOpen} setIsOpen={setIsOpen} />
+        <SideBar setLogoutVisibility={setLogoutVisibility} isOpen={isOpen} setIsOpen={setIsOpen} />
       </main >
     ) : (
       <FirstPage handlePropSetUserdata={handlePropSetUserdata} />
