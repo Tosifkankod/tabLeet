@@ -29,7 +29,7 @@ function Temp() {
     }, [])
 
     return (
-        <div className="flex gap-4 bg-[#1d2120] rounded-xl p-4 w-93 ">
+        <div className="flex gap-4 bg-black rounded-xl p-4 w-93 ">
             {
                 months.length > 0 ? (months.map((month) => (
                     <div key={month.name} className="flex flex-col gap-1">

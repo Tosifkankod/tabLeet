@@ -35,7 +35,7 @@ const TimeLeft = () => {
             <div className="w-full bg-gray-400 rounded-md overflow-hidden">
                 <div
                     style={{ width: `${progressPercent}%` }}
-                    className="h-3 bg-green-900 transition-all duration-1000 ease-in-out text-white text-[9px] flex items-center justify-end px-1"
+                    className="h-3 bg-[var(--color-primary)] transition-all duration-1000 ease-in-out text-white text-[9px] flex items-center justify-end px-1"
                 >
                     {Math.ceil(progressPercent)}%
                 </div>

@@ -50,7 +50,7 @@ const SideBar = ({ isOpen, setIsOpen }) => {
             <div className={`fixed top-0 right-0 h-full w-90 rounded-tl-xl rounded-bl-xl bg-[var(--color-background)] shadow-lg z-50 transform transition-transform duration-300 ${isOpen ? "-translate-x-0" : "-translate-x-[-100%]"}`}>
                 <div className="flex justify-center items-center gap-3 p-4">
                     <img src="/assets/icons/tab-leet-icon.svg" width='40px' className=' ' />
-                    <h1 className="text-4xl font-medium">TabLeet</h1>
+                    <h1 className="text-4xl font-medium text-[var(--color-primary)]">TabLeet</h1>
                 </div>
 
                 {/* NAVIGATION STARTS FROM HERE */}
@@ -189,7 +189,7 @@ const SideBar = ({ isOpen, setIsOpen }) => {
                     </div>
 
                     {
-                        <div className={`rounded-md w-full h-60 max-h-[calc(100vh-8.6rem)] overflow-y-auto border-[0.5px] border-white/5 outline-[0.5px] outline-black/5 mt-0 p-4 ${isThemeOpen ? 'block' : 'hidden'} transition-all duration-300`}>
+                        <div className={`rounded-md  w-full h-60 max-h-[calc(100vh-8.6rem)] overflow-y-auto border-[0.5px] border-white/5 outline-[0.5px] outline-black/5 mt-0 p-4 ${isThemeOpen ? 'block' : 'hidden'} transition-all duration-300  [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-[var(--color-surface)] [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-thumb]:rounded-md [&::-webkit-scrollbar-thumb]:bg-[var(--color-primary)]`}>
                             <p className="text-xs mb-4 text-[var(--color-primary)]">Theme</p>
                             <ul className="w-full">
                                 <ThemeSwitcher />
