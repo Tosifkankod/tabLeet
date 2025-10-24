@@ -54,7 +54,7 @@ const SideBar = ({ isOpen, setIsOpen, setLogoutVisibility }) => {
                     className="fixed inset-0 backdrop-blur-xsx z-40"
                 ></div>
             )}
-            <div className={`fixed top-0 right-0 h-full w-90 rounded-tl-xl rounded-bl-xl bg-[var(--color-background)] shadow-lg z-50 transform transition-transform border-1 duration-300 ${isOpen ? "-translate-x-0" : "-translate-x-[-100%]"}`}>
+            <div className={`fixed top-0 right-0 h-full w-90 rounded-tl-xl rounded-bl-xl bg-[var(--color-background)] shadow-lg z-50 transform transition-transform duration-300 ${isOpen ? "-translate-x-0" : "-translate-x-[-100%]"}`}>
                 <div className="flex justify-center items-center gap-3 p-4">
                     <img src="/assets/icons/tab-leet-icon.svg" width='40px' className=' ' />
                     <h1 className="text-4xl font-medium text-[var(--color-primary)]">TabLeet</h1>

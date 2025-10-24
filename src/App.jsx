@@ -15,7 +15,7 @@ import { googleAppsConstant } from './constants/GoogleAppsConstant.jsx';
 function App() {
   const [quote, setQuote] = useState(() => {
     const quote = localStorageHelper.get(keys.ltQuote);
-    return quote ? quote : null;
+    return quote ? quote : "";
   })
   const [googleApps, setGoogleApps] = useState(false);
   const { state } = useSettings();
