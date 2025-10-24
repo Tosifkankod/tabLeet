@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-
 const levels = [
   "bg-gray-200",
   "bg-green-200",
@@ -13,6 +12,7 @@ function Heatmap() {
   const [activityData, setActivityData] = useState([]);
 
   useEffect(() => {
+
     fetch(`http://localhost:3000/api/v1/leetcode/calendar/tosifkankod`, {
       method: 'GET',
       headers: {

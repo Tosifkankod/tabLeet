@@ -99,7 +99,11 @@ function App() {
 
   // fn for logout the user
   const handleLogoutUser = () => {
-
+    setUserData(() => {
+      return null;
+    })
+    localStorage.clear();
+    setLogoutVisibility(false)
   }
 
   return (

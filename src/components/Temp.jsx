@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from 'react';
-
+import { localStorageHelper } from '../utils/localStorageHelper';
+import { keys } from '../constants/localStoragekeys';
 
 function Temp() {
     const [months, setMonths] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/api/v1/leetcode/calendarmonth/tosifkankod`, {
+        let data = localStorageHelper.get(keys.ltUserdata);
+        const userName = data.matchedUser.username ? data.matchedUser.username : null;
+
+        if (userName == null) {
+            localStorage.clear();
+            return;
+        }
+
+        fetch(`http://localhost:3000/api/v1/leetcode/calendarmonth/${userName}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
