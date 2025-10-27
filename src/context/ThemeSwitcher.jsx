@@ -5,9 +5,17 @@ const themes = [
         name: 'Default',
         bg: '#ffffff',
         surface: '#d9d9d9',
-        primary: '#313131',
+        primary: '#C9C4BD',
         button: '#c6c6c6',
-        secondary: '#4d4d4d'
+        secondary: '#404648'
+    },
+    {
+        name: 'Dark',
+        bg: '#181A1B',
+        surface: '#2D3133',
+        primary: '#25282A',
+        button: '#383D3F',
+        secondary: '#eed8f5'
     },
     {
         name: 'Dracula',

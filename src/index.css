@@ -19,6 +19,16 @@
   /* Borders, disabled text, placeholders */
 }
 
+
+.theme-dark {
+  --color-background: #181A1B;
+  --color-surface: #2D3133;
+  --color-primary: #aca9a5;
+  --color-button: #383D3F;
+  --color-secondary: #383D3F;
+  --color-muted: #404648;
+}
+
 .theme-dracula {
   --color-background: #282a36;
   --color-surface: #44475a;
@@ -63,6 +73,7 @@
   --color-secondary: #5a4fcf;
   --color-muted: #eed8f5;
 }
+
 
 /* Custom scrollbar styling for smooth sliding */
 /* .draw {
