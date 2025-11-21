@@ -3,9 +3,25 @@ import { localStorageHelper } from '../utils/localStorageHelper';
 import { keys } from '../constants/localStoragekeys';
 
 function Temp() {
-    const [months, setMonths] = useState([]);
+    const [months, setMonths] = useState(() => {
+        let data = localStorageHelper.get(keys.ltHeatMap);
+        return data ? data : [];
+    });
 
     useEffect(() => {
+        const FIVE_MINUTES = 5 * 60 * 1000;
+
+        const lastTime = localStorage.getItem("lastApiCallTime");
+        const now = Date.now();
+
+        const shouldCallAPI = !lastTime || (now - lastTime) >= FIVE_MINUTES;
+        if (!shouldCallAPI) {
+            console.log("⏳ API not called — 5 minutes not passed yet.");
+            return;
+        }
+
+        localStorageHelper.set("lastApiCallTime", now);
+
         let data = localStorageHelper.get(keys.ltUserdata);
         const userName = data.matchedUser.username ? data.matchedUser.username : null;
 
@@ -28,8 +44,8 @@ function Temp() {
             const data = await response.json().catch((err) => {
                 throw new Error(err.message);
             });
+            localStorageHelper.set(keys.ltHeatMap, data.data.months);
             setMonths(data.data.months);
-            console.log(data);
 
         }).catch((err) => {
             alert(err.message)
@@ -48,6 +64,7 @@ function Temp() {
                                 <div key={weekIndex} className="flex flex-col gap-1">
                                     {week.map((day, dayIndex) => (
                                         <div
+                                            style={day.count === 0 ? { background: '#25282A' } : {}}
                                             key={dayIndex}
                                             title={day.day && day.count !== null ? `${new Date(day.day).toDateString()} - ${day.count} activities` : day.day}
                                             className={`w-4 h-4 rounded-sm ${day.level}`}

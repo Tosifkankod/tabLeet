@@ -148,10 +148,8 @@ function App() {
           </div>
           <div className="">
             <p className="text-[var(--color-secondary)] text-sm md:text-base font-medium pb-1 text-ellipsis line-clamp-1">
-              {/* <q></q> */}
             </p>
             <div className="flex flex-col md:flex-row gap-2">
-              {/* <Heatmap /> */}
               <Temp />
               <div className="hidden sm:block space-y-2 text-[var(--color-primary)]">
                 <div className="grid grid-cols-2 gap-2 ">

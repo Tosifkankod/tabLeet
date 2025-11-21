@@ -8,5 +8,7 @@ export const keys = {
   ltGoogleAppsToggle: 'ltGoogleAppsToggle',
   ltUserdata: "userData",
   ltQuote: "ltQuote",
-  ltNotesData: "ltNotesData"
+  ltNotesData: "ltNotesData",
+  ltLastApiTime: "ltLastApiTime", 
+  ltHeatMap: "ltHeatMap"
 };
