@@ -47,7 +47,7 @@ function App() {
     localStorageHelper.set(keys.ltUserdata, user_data)
     setUserData(user_data)
   }
-
+  console.log("hello");
   const color = (index) => {
     if (index == 0) {
       return `text-black`
